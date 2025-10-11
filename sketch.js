@@ -1,13 +1,14 @@
 function preload(){
-
+    parede = loadImage('/assets/img_01.png');
+    caminho = loadImage('/assets/img_02.png');
 }
 
-function setup(){
-    createCanvas(400, 400);
+function setup(dificuldade){
+    createCanvas(1728, 1728);
+    mapConfig = generateMaze(27);
+
 }
 
 function draw(){
-    background(20);
-    fill("red")
-    rect(200,200,25,25)
+    showMap();
 }
