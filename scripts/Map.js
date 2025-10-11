@@ -26,36 +26,45 @@ function showMap(){
 function generateMaze(lado) {
     
     let maze = blankMapGenerate(lado);
+    const pilha = [[1, 1]];
+    maze[1][1] = 1;
     
-    function cavar(x, y) {
-        maze[x][y] = 1;
+    const direcoes = [[0, -2], [0, 2], [-2, 0], [2, 0]];
+    
+    while (pilha.length > 0) {
+        const [x, y] = pilha[pilha.length - 1];
         
-        const direcoes = [
-            {dx: 0, dy: -2},  
-            {dx: 0, dy: 2},   
-            {dx: -2, dy: 0},  
-            {dx: 2, dy: 0}    
-        ];
-        
-        for (let i = direcoes.length - 1; i > 0; i--) {
+        // Embaralha direções
+        const dirsEmbaralhadas = [...direcoes];
+        for (let i = dirsEmbaralhadas.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [direcoes[i], direcoes[j]] = [direcoes[j], direcoes[i]];
+            [dirsEmbaralhadas[i], dirsEmbaralhadas[j]] = 
+            [dirsEmbaralhadas[j], dirsEmbaralhadas[i]];
         }
         
-        for (const {dx, dy} of direcoes) {
+        let encontrouVizinho = false;
+        
+        for (const [dx, dy] of dirsEmbaralhadas) {
             const novoX = x + dx;
             const novoY = y + dy;
             
             if (novoX >= 1 && novoX <= lado - 2 && 
                 novoY >= 1 && novoY <= lado - 2 && 
-                maze[novoX][novoY] === 0) {        
-                maze[x + dx/2][y + dy/2] = 1;
+                maze[novoX][novoY] === 0) {
                 
-                cavar(novoX, novoY);
+                maze[x + dx/2][y + dy/2] = 1;
+                maze[novoX][novoY] = 1;
+                pilha.push([novoX, novoY]);
+                
+                encontrouVizinho = true;
+                break;
             }
         }
+        
+        if (!encontrouVizinho) {
+            pilha.pop();
+        }
     }
-    cavar(1, 1);
     
     return maze;
 }
