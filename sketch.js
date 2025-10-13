@@ -6,9 +6,11 @@ function preload(){
 function setup(dificuldade){
     createCanvas(1728, 1728);
     mapConfig = generateMaze(27);
-
+   //let player = new Entidade();
+    
 }
 
 function draw(){
     showMap();
+    Text("Posição atual do mouse: " + mouseX + " " + mouseY, 500+350+14, 500+350+14);
 }
