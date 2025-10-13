@@ -5,6 +5,8 @@ class Entidade {
      this.x = x;
      this.y = y;
      this.cor = cor;
+     this.alive = false;
+     this.hp = 100;
     }
 
     show(){
@@ -41,5 +43,10 @@ class Entidade {
 
     getPosY(){ // Retorna a posição Y do objeto.
         return this.y;
+    }
+
+    // Métodos de estado
+    death(){
+        this.alive = false;
     }
 }
