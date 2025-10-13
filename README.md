@@ -10,7 +10,7 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
 
 ## Objetivos:
 
-    - Um personagem controlado pelo jogador []
+    - Um personagem controlado pelo jogador [X]
     
     - Um conjunto de inimigos controlados pelo computador []
 

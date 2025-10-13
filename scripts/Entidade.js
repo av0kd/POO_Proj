@@ -1,39 +1,56 @@
 class Entidade {
     
 
-    constructor(x, y, cor){
+    constructor(x, y, cor, hp, speed){
      this.x = x;
      this.y = y;
      this.cor = cor;
-     this.alive = false;
-     this.hp = 100;
+     this.alive = true;
+     this.hp = hp;
+     this.moveSpeed = speed;
     }
 
     show(){
         fill(this.cor);
-        square(this.x, this.y, 20);
+        square(this.x, this.y, 140);
     }
 
     //Métodos de movimento 
-    //  Recebem um parâmetro incremento (numero) que diz o quanto a respectiva posição
+    //  Recebem um parâmetro inncremento (numero) que diz o quanto a respectiva posição
     //  muda para cada chamada. 
-    //  Se ela for chamada a cada frame, a velocidade de incremento vai ser muito grande. Não usar numeros maiores do que 1
+    //  Se ela for chamada a cada frame, a velocidade de inncremento vai ser muito grande. Não usar numeros maiores do que 1
     //  Para pequenos movimentos.
-    
-    moveUp(increment){
-        this.y -= increment;
+
+    moveUp(){
+        if(!this.alive){
+            return;
+        } else {
+            this.y -= this.moveSpeed;
+        }
     }
 
-    moveDown(increment){
-        this.y += increment;
+    moveDown(){
+        if(!this.alive){
+            return;
+        } else {
+            this.y += this.moveSpeed;
+        }
     }
 
-    moveLeft(increment){
-        this.x -= increment;
+    moveLeft(){
+        if(!this.alive){
+            return;
+        } else {
+            this.x -= this.moveSpeed;
+        }
     }
 
-    moveRight(increment){
-        this.x =+ increment;
+    moveRight(){
+        if(!this.alive){
+            return;
+        } else {
+            this.x += this.moveSpeed;
+        }
     }
 
     //Funções Get
@@ -49,4 +66,6 @@ class Entidade {
     death(){
         this.alive = false;
     }
+
+
 }

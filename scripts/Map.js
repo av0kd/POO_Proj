@@ -1,4 +1,4 @@
-const tlMapSz = 64;
+
 mapConfig = [];
 
 function blankMapGenerate(lado){
