@@ -12,5 +12,4 @@ function setup(dificuldade){
 
 function draw(){
     showMap();
-    Text("Posição atual do mouse: " + mouseX + " " + mouseY, 500+350+14, 500+350+14);
 }
