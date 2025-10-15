@@ -1,6 +1,3 @@
-
-mapConfig = [];
-
 function blankMapGenerate(lado){
     let emptyMap = [];
     

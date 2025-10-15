@@ -1,6 +1,6 @@
 class Inimigo extends Entidade {
-    constructor(x, y, cor, hp, speed){
-        super(x, y, cor, hp, speed);
+    constructor(x, y, cor, hp, speed, size){
+        super(x, y, cor, hp, speed, size);
         this.alive = true;
         this.radius = 10;
     }

@@ -1,31 +1,27 @@
-class Entidade {
+ class Entidade {
     
-
-    constructor(x, y, cor, hp, speed){
-     this.x = x;
-     this.y = y;
+    constructor(x, y, cor, hp, speed, size){
+     this.x = Number(x);
+     this.y = Number(y);
      this.cor = cor;
      this.alive = true;
-     this.hp = hp;
-     this.moveSpeed = speed;
+     this.hp = parseInt(hp);
+     this.moveSpeed = parseInt(speed);
+     this.size = parseInt(size);
     }
 
     show(){
         fill(this.cor);
-        square(this.x, this.y, 140);
+        square(this.x, this.y, this.size);
     }
 
-    //Métodos de movimento 
-    //  Recebem um parâmetro inncremento (numero) que diz o quanto a respectiva posição
-    //  muda para cada chamada. 
-    //  Se ela for chamada a cada frame, a velocidade de inncremento vai ser muito grande. Não usar numeros maiores do que 1
-    //  Para pequenos movimentos.
-
+    //Métodos de movimento --- Incrementam ou decrementam de acordo com o atributo moveSpeed do objeto
+    
     moveUp(){
         if(!this.alive){
             return;
         } else {
-            this.y -= this.moveSpeed;
+            this.y -= this.moveSpeed*this.canMoveUp();
         }
     }
 
@@ -33,7 +29,7 @@ class Entidade {
         if(!this.alive){
             return;
         } else {
-            this.y += this.moveSpeed;
+            this.y += this.moveSpeed*this.canMoveDown();
         }
     }
 
@@ -41,7 +37,7 @@ class Entidade {
         if(!this.alive){
             return;
         } else {
-            this.x -= this.moveSpeed;
+            this.x -= this.moveSpeed*this.canMoveLeft();
         }
     }
 
@@ -49,9 +45,29 @@ class Entidade {
         if(!this.alive){
             return;
         } else {
-            this.x += this.moveSpeed;
+            this.x += this.moveSpeed*this.canMoveRight();
         }
     }
+
+
+    //Métodos de verificar posições --- analisam a posição no mapa de acordo com os parametros x e y do objeto
+    
+    canMoveUp(){
+        return (mapConfig[quadrante(this.y)][quadrante(this.x+4)] == 1 && mapConfig[quadrante(this.y)][quadrante(this.x+this.size-5)] == 1);
+    }
+
+    canMoveDown(){
+        return (mapConfig[quadrante(this.y+this.size)][quadrante(this.x+4)] == 1 && mapConfig[quadrante(this.y+this.size)][quadrante(this.x+this.size-5)] == 1);
+    }
+
+    canMoveLeft(){
+        return (mapConfig[quadrante(this.y+4)][quadrante(this.x)] == 1 && mapConfig[quadrante(this.y+this.size-4)][quadrante(this.x)] == 1);
+    }
+
+    canMoveRight(){
+        return (mapConfig[quadrante(this.y+4)][quadrante(this.x+this.size-4)] == 1 && mapConfig[quadrante(this.y+this.size-4)][quadrante(this.x+this.size-4)] == 1);
+    }
+
 
     //Funções Get
     getPosX(){ // Retorna a posição X do objeto.
