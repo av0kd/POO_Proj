@@ -1,5 +1,5 @@
 class Player extends Entidade {
-    // Irei adicionar o Hp do player só para ilustração, iremos decidir se vamos deixar ele aqui depois.
+    
     constructor(x, y, cor, hp, speed, size){
         super(x, y, cor, hp, speed, size);
     }

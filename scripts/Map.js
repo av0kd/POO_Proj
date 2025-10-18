@@ -22,6 +22,10 @@ function showMap(){
 
 function generateMaze(lado) {
     
+    if(lado%2 == 0){
+        lado++;
+    }
+
     let maze = blankMapGenerate(lado);
     const pilha = [[1, 1]];
     maze[1][1] = 1;

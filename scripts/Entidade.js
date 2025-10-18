@@ -79,9 +79,23 @@
     }
 
     // Métodos de estado
-    death(){
-        this.alive = false;
+    checkDeath(){
+        if(this.hp <= 0){
+            this.alive = false;
+        }
     }
 
+
+    isAlive(){
+        if(this.alive == true){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    dano(entidade){
+        entidade.hp -= 1.5;
+    }
 
 }
