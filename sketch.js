@@ -17,14 +17,17 @@ function centerCanvas() {
 function setup(dificuldade){
     canvaConf = createCanvas(800, 800);
     centerCanvas();
-    mapConfig = generateMaze(27);
-    player = new Player(tlMapSz+20,tlMapSz+20,"red",10,4, 120);
+    mapConfig = generateMaze(19);
+    let randPos = parseInt(Math.random()*nodeEnd.length);
+    player = new Player(nodeEnd[randPos][1]*tlMapSz+20,nodeEnd[randPos][0]*tlMapSz+20,"red",10,4, 120);
 }
 
 function draw(){
     background(0);
     translate(width/2 - player.x-70, height/2 - player.y-70);
     showMap();
+
+
 
     if(player.isAlive()){
         player.show();

@@ -1,3 +1,5 @@
+nodeEnd = [];
+
 function blankMapGenerate(lado){
     let emptyMap = [];
     
@@ -21,7 +23,8 @@ function showMap(){
 
 
 function generateMaze(lado) {
-    
+    nodeEnd = [];
+
     if(lado%2 == 0){
         lado++;
     }
@@ -63,9 +66,32 @@ function generateMaze(lado) {
         }
         
         if (!encontrouVizinho) {
+            if(MTON(x,y,maze,lado)){nodeEnd.push([x, y])};
             pilha.pop();
         }
     }
     
     return maze;
+}
+
+//More than 1 neighboor
+function MTON(x, y, maze, lado) {
+    let directions = [
+        [0, -1], [0, 1], [-1, 0], [1, 0]  // Vizinhos adjacentes (1 célula)
+    ];
+    
+    let countNeighboors = 0;
+    
+    for (const [dx, dy] of directions) {
+        const ngbX = x + dx;
+        const ngbY = y + dy;
+        
+        if (ngbX >= 0 && ngbX < lado && 
+            ngbY >= 0 && ngbY < lado && 
+            maze[ngbX][ngbY] === 1) {
+            countNeighboors++;
+        }
+    }
+    
+    return countNeighboors == 1;
 }
