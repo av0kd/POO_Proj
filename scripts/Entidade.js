@@ -7,6 +7,7 @@
      this.alive = true;
      this.hp = parseInt(hp);
      this.moveSpeed = parseInt(speed);
+     this.running = false;
      this.size = parseInt(size);
     }
 
@@ -20,8 +21,10 @@
     moveUp(){
         if(!this.alive){
             return;
-        } else {
+        } else if(this.running == false){
             this.y -= this.moveSpeed*this.canMoveUp();
+        } else {
+            this.y -= this.moveSpeed*2*this.canMoveUp();
         }
     }
 

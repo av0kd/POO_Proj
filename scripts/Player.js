@@ -2,9 +2,20 @@ class Player extends Entidade {
     
     constructor(x, y, cor, hp, speed, size){
         super(x, y, cor, hp, speed, size);
+        this.stamina = 100;
+    }
+    
+    run(){
+        this.running == true;
     }
 
     moveMap() {
+        /*let speed = this.moveSpeed;
+        if(keyIsDown(16)){
+            console.log("Apertei shift");
+            //console.log(this.speed);
+        }*/
+
         if (keyIsDown(65)||keyIsDown(LEFT_ARROW)) {
             this.moveLeft();
         }
