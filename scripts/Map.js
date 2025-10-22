@@ -21,7 +21,6 @@ function showMap(){
     }
 }
 
-
 function generateMaze(lado) {
     nodeEnd = [];
 
