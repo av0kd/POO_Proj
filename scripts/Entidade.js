@@ -1,4 +1,4 @@
- class Entidade {
+  class Entidade {
     
     constructor(x, y, cor, hp, speed, size){
      this.x = Number(x);
@@ -96,6 +96,22 @@
 
     dano(entidade){
         entidade.hp -= 1.5;
-    }
+     }
+
+     #distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.
+         let distancia_x = Math.abs(entidade.x - this.x);
+         let distancia_y = Math.abs(entidade.y - this.y);
+         let quadradoDistancia = Math.sqrt(Math.pow(distancia_x, 2) + Math.pow(distancia_y, 2));
+
+         return quadradoDistancia;
+     }
+
+     #verificarColisão(entidade) { //Retorna 1 se a distância for maior do que o tamanho(ou seja, não estáo se tocando) e 0 se a distância for menor (estão se tocando).
+         if (this.#distanciaDaEntidade(entidade) >= this.size) {
+             return 1;
+         } else {
+             return 0;
+         }
+     }
 
 }
