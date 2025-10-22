@@ -1,9 +1,10 @@
 class Player extends Entidade {
     #speed;
     #running;
+    #stamina;
     constructor(x, y, cor, hp, speed, size){
         super(x, y, cor, hp, speed, size);
-        this.stamina = 100;
+        this.#stamina = 100;
         this.#speed = this.moveSpeed; // moveSpeed vai ser tratado como algo constante enquanto speed vai ser uma variavel.
         this.#running = false;
     }
@@ -11,9 +12,9 @@ class Player extends Entidade {
 
     moveMap() {
         if(frameCount % 30 == 0){
-            console.log("Stamina: "+this.stamina);
+            console.log("Stamina: "+this.#stamina.toFixed(2));
         }
-        if(keyIsDown(16) && this.stamina > 0){
+        if(keyIsDown(16) && this.#stamina > 0){
             this.moveSpeed = this.#speed * 2;
             this.#running = true;
         } else {
@@ -22,9 +23,9 @@ class Player extends Entidade {
         }
 
         if (this.#isRunning()) {
-            this.stamina -= 0.07;
-        } else if(!this.#isRunning() && this.stamina < 100 && !keyIsDown(16)){
-            this.stamina += 0.10;
+            this.#stamina -= 0.07;
+        } else if(!this.#isRunning() && this.#stamina < 100 && !keyIsDown(16)){
+            this.#stamina += 0.10;
         }
 
         if (keyIsDown(65)||keyIsDown(LEFT_ARROW)) {
@@ -46,5 +47,9 @@ class Player extends Entidade {
 
     #isRunning() {
         return this.#running == true ? true : false; 
+    }
+
+    getStamina(){
+        return this.stamina;
     }
 }

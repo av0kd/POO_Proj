@@ -14,7 +14,7 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
     
     - Um conjunto de inimigos controlados pelo computador []
 
-    - O inimigo terá uma classe com várias instancias []
+    - O inimigo terá uma classe com várias instancias [] - Half Done
     
     - Retirar inimigos derrotados da tela []
 
