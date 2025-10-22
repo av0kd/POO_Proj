@@ -35,3 +35,12 @@ class Inimigo extends Entidade {
         }
     }
 }
+
+//Problema: Como o jogo percorre o vetor de inimigos 1 por 1 e exibe eles em ordem de aparição (Inimigos que existem a mais tempo são exibidos primeiro)
+//  Inimigos que forem criados depois ficarão "embaixo" dos inimigos que foram criados anteriormente.
+// Futuramente adicionar um atributo 'prioridade' para cada tipo de inimigo, e organizar o vetor em forma decrescente de prioridade.
+//  Assim o jogo irá exibir os inimigos com maior prioridade em cima daqueles com menor prioridade
+
+//Por exemplo, inimigos fortes que o player precisa ver antes dos mais fracos terão prioridade maior, a fim de não serem escondidos por outros.
+
+//^Isso tudo será inútil se os inimigos tiverem colisão!
