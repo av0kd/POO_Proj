@@ -7,7 +7,6 @@
      this.alive = true;
      this.hp = parseInt(hp);
      this.moveSpeed = parseInt(speed);
-     this.running = false;
      this.size = parseInt(size);
     }
 
@@ -21,10 +20,8 @@
     moveUp(){
         if(!this.alive){
             return;
-        } else if(this.running == false){
-            this.y -= this.moveSpeed*this.canMoveUp();
         } else {
-            this.y -= this.moveSpeed*2*this.canMoveUp();
+            this.y -= this.moveSpeed*this.canMoveUp();
         }
     }
 
@@ -56,7 +53,7 @@
     //Métodos de verificar posições --- analisam a posição no mapa de acordo com os parametros x e y do objeto
     
     canMoveUp(){
-        return (mapConfig[quadrante(this.y)][quadrante(this.x+4)] == 1 && mapConfig[quadrante(this.y)][quadrante(this.x+this.size-5)] == 1);
+        return (mapConfig[quadrante(this.y)][quadrante(this.x+5)] == 1 && mapConfig[quadrante(this.y)][quadrante(this.x+this.size-10)] == 1);
     }
 
     canMoveDown(){

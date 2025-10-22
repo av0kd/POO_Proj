@@ -17,12 +17,13 @@ function centerCanvas() {
 }
 
 function setup(){
+    frameRate(120);
     canvaConf = createCanvas(800, 800);
     centerCanvas();
     if(dificulty == 1){
         mapConfig = generateMaze(19);
         nodeEnd = arrayShuffle(nodeEnd);
-        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"red",10,4, 120);
+        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"red",10,2, 120);
         console.log(nodeEnd[0] + "  -  " + nodeEnd[1]);
     }
 }
@@ -40,21 +41,18 @@ function draw(){
         player.moveMap();
     }
     
-    
-    /*
     for(let i in inimigos){
         inimigos[i].show();
         inimigos[i].randomMove();
         inimigos[i].atacar(player);
     }
-    console.log("Vida do player: " + player.hp);
-    console.log(inimigos.length);
+    //console.log("Vida do player: " + player.hp);
+    //console.log(inimigos.length);
     //pleaseMove();
-    if(stillWants && (frameCount % 60 == 0)){
+    if(stillWants && (frameCount % 120 == 0)){
         displayFrameCount();
     }
     
-    */
 }
 
 function criarInimigo(x, y, cor, hp, speed, size){
