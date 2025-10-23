@@ -1,7 +1,7 @@
 class Inimigo extends Entidade {
     constructor(x, y, cor, hp, speed, size){
         super(x, y, cor, hp, speed, size);
-        this.radius = 10;
+        this.radius = this.size/2;
     }
 
 

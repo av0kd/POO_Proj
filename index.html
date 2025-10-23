@@ -14,16 +14,19 @@
   <body>
     <main>
     </main>
+    <script src="scripts/Entidade.js"></script>
+    <script src="scripts/Player.js"></script>
+    <script src="scripts/Inimigo.js"></script>
     <script src="sketch.js"></script>
     <script src="scripts/system.js"></script>
     <script src="scripts/Map.js"></script>
-    <script src="scripts/Entidade.js"></script>
-    <script src="scripts/Player.js"></script>
-    <script src="scripts/Inimigo.js"></script>                        
-    <button onclick="criarInimigo(tlMapSz*1+10,tlMapSz*1+10,'139, 69, 19',10,15,150)">Adicionar Inimigo</button>
+    <button onclick="criarInimigo(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,'139, 69, 19',10,15,150)">Adicionar Inimigo</button>
     <button onclick="displayFrameCount()">Mostrar contador de quadros</button>
     <button onclick="noWant()">Tirar contador de quadros</button>
-    <p id="Frame"></p>
+    <button onclick="displayStamina()">Mostrar stamina</button>
+    <button onclick ="retireStamina()">Retirar stamina</button>
+    <p id="Frame"></p><br>
+    <p id="Stamina"></p>
     
   </body>
 </html>

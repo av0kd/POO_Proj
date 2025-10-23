@@ -3,6 +3,8 @@ mapConfig = [];
 inimigos = [];
 dificulty = 1;
 var canvaConf;
+let player;
+
 
 function preload(){
     parede = loadImage('/assets/img_01.png');
@@ -29,17 +31,19 @@ function setup(){
 }
 
 function draw(){
-    console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
+    //console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
     background(0);
     translate(width/2 - player.x-70, height/2 - player.y-70);
     showMap();
 
 
     image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
+    player.checkDeath();
     if(player.isAlive()){
         player.show();
         player.moveMap();
     }
+    displayStamina();
     
     for(let i in inimigos){
         inimigos[i].show();
@@ -73,4 +77,8 @@ function arrayShuffle(array){
         arrCpy[randPos] = aux;
     }
      return arrCpy;
+}
+
+function displayStamina(){
+    document.getElementById('Stamina').innerHTML = "Estamina do jogador: " + player.stamina.toFixed(2);
 }
