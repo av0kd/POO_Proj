@@ -95,7 +95,7 @@
     }
 
     dano(entidade){
-        entidade.hp -= 20;
+        entidade.hp -= 0.005;
      }
 
      #distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.

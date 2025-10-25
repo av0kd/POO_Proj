@@ -22,14 +22,14 @@ class Inimigo extends Entidade {
 
     randomMove(){ //método temporário para o objeto se mecher em uma direção aleatória
         let aleatorio = floor((Math.random() * 4 + 0.99));
-        if(frameCount % 30 == 0){
-            if(aleatorio == 1){
+        if(frameCount % 15 == 0){
+            if(aleatorio == 1 && this.canMoveUp() == 1){
                 this.moveUp();
-            } else if(aleatorio == 2){
+            } else if(aleatorio == 2 && this.canMoveDown() == 1){
                 this.moveDown();
-            } else if(aleatorio == 3){
+            } else if(aleatorio == 3 && this.canMoveLeft() == 1){
                 this.moveLeft();
-            } else {
+            } else if(this.canMoveRight() == 1){
                 this.moveRight();
             }
         }
