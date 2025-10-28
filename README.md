@@ -27,3 +27,27 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
     - Telas de abertura []
     
     - Tela de game Over []
+
+## Lista de fazeres: 
+    Darlan -
+    ... 
+    Eliel - 
+    ...
+    Enzo - 
+        *Organizar codigo
+        *Ajustar as minhas classes para atender requisitos tecnicos
+        *Implementar sistema lógico de movimento para IA
+        *Adicionar spawn aleatório junto com darlan
+    
+## Requisitos técnicos:
+# Herança:
+    - 3 Classes que herdem
+    - Cada classe filho tem mais atributos novos
+# Estático:
+    - Métodos estáticos (total?) 
+# Polimorfismo:
+    3 usos dos métodos this();
+    3 usos dos métodos super();
+    *Private
+    3 atributos privados em 3 classes
+    3 pares de get e set;
