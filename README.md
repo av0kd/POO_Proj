@@ -37,6 +37,7 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
         *Organizar codigo
         *Ajustar as minhas classes para atender requisitos tecnicos
         *Implementar sistema lógico de movimento para IA
+        *Adicionar colisão entre entidades
         *Adicionar spawn aleatório junto com darlan
     
 ## Requisitos técnicos:

@@ -33,7 +33,7 @@ function setup(){
 function draw(){
     //console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
     background(0);
-    translate(width/2 - player.x-70, height/2 - player.y-70);
+    translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
     showMap();
 
 
@@ -49,6 +49,7 @@ function draw(){
         inimigos[i].show();
         inimigos[i].randomMove();
         inimigos[i].atacar(player);
+        //console.log(inimigos[i].size);
     }
     //console.log("Vida do player: " + player.hp);
     //console.log(inimigos.length);

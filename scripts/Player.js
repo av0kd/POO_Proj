@@ -22,9 +22,9 @@ class Player extends Entidade {
             this.moveSpeed = this.#speed;
         }
 
-        if (this.#isRunning()) {
+        if (this.#isPlayerRunning()) {
             this.stamina -= 0.07;
-        } else if(!this.#isRunning() && this.stamina < 100 && !keyIsDown(16)){
+        } else if(!this.#isPlayerRunning() && this.stamina < 100 && !keyIsDown(16)){
             this.stamina += 0.10;
         }
 
@@ -45,7 +45,7 @@ class Player extends Entidade {
         }
     }
 
-    #isRunning() {
+    #isPlayerRunning() {
         return this.#running == true ? true : false; 
     }
 

@@ -1,19 +1,21 @@
 class Inimigo extends Entidade {
+
     constructor(x, y, cor, hp, speed, size){
         super(x, y, cor, hp, speed, size);
-        this.radius = this.size/2;
+        this.radius = ((this.size*Math.sqrt(2))/2);
     }
 
 
     #distanciaDoPlayer(player){
-        let distancia_x = Math.abs(player.x - this.x);
-        let distancia_y = Math.abs(player.y - this.y);
+        let distancia_x = Math.abs(player.getPosX() - this.getPosX());
+        let distancia_y = Math.abs(player.getPosY() - this.getPosY());
         let quadradoDistancia = Math.sqrt(Math.pow(distancia_x, 2) + Math.pow(distancia_y, 2));
 
         return quadradoDistancia;
     }
 
     atacar(player){
+        //console.log("Posição X:" + player.getPosX() + " Posição Y: " + player.getPosY() + " Distancia: " + this.#distanciaDoPlayer(player));
         if(this.#distanciaDoPlayer(player) <= this.radius){
             console.log("AIAI\n");
             this.dano(player);
