@@ -85,6 +85,14 @@
     }
 
     //Funções Set
+    setX(number){
+        this.#x = number;
+    }
+
+    setY(number){
+        this.#y = number;
+    }
+
     setHP(incremento){
         this.#hp += incremento;
     }
@@ -117,12 +125,12 @@
          return quadradoDistancia;
      }
 
-     #verificarColisão(entidade) { //Retorna 1 se a distância for maior do que o tamanho(ou seja, não estáo se tocando) e 0 se a distância for menor (estão se tocando).
+     /*#verificarColisão(entidade) { //Retorna 1 se a distância for maior do que o tamanho(ou seja, não estáo se tocando) e 0 se a distância for menor (estão se tocando).
          if (this.#distanciaDaEntidade(entidade) >= this.size) {
              return 1;
          } else {
              return 0;
          }
-     }
+     }*/
 
 }
