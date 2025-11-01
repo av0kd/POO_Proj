@@ -7,6 +7,11 @@ let player;
 
 
 function preload(){
+    escuridao = loadImage('/assets/darkness.png');
+    playerImgU = loadImage('/assets/playerU.png');
+    playerImgD = loadImage('/assets/playerD.png');
+    playerImgR = loadImage('/assets/playerR.png');
+    playerImgL = loadImage('/assets/playerL.png');
     parede = loadImage('/assets/img_01.png');
     caminho = loadImage('/assets/img_02.png');
     end = loadImage('/assets/img_03.png');
@@ -25,8 +30,7 @@ function setup(){
     if(dificulty == 1){
         mapConfig = generateMaze(19);
         nodeEnd = arrayShuffle(nodeEnd);
-        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"red",10,2, 120);
-        console.log(nodeEnd[0] + "  -  " + nodeEnd[1]);
+        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120);
     }
 }
 
@@ -39,6 +43,7 @@ function draw(){
 
     image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
     player.checkDeath();
+    
     if(player.isAlive()){
         player.show();
         player.moveMap();
@@ -57,7 +62,7 @@ function draw(){
     if(stillWants && (frameCount % 120 == 0)){
         displayFrameCount();
     }
-    
+    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
 }
 
 function criarInimigo(x, y, cor, hp, speed, size){

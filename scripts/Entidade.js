@@ -2,6 +2,7 @@
     #x;
     #y;
     #hp;
+    #sightDirection = "D";
     constructor(x, y, cor, hp, speed, size){
      this.#x = Number(x);
      this.#y = Number(y);
@@ -13,8 +14,27 @@
     }
 
     show(){
-        fill(this.cor);
-        square(this.getPosX(), this.getPosY(), this.size);
+        if(this.cor == "player"){
+            switch(this.#sightDirection){
+                case("U"):
+                    image(playerImgU, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("D"):
+                    image(playerImgD, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("L"):
+                    image(playerImgL, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("R"):
+                    image(playerImgR, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+            }
+        }
+        else{
+            fill(this.cor);
+            square(this.getPosX(), this.getPosY(), this.size);
+        }
+        
     }
 
     //Métodos de movimento --- Incrementam ou decrementam de acordo com o atributo moveSpeed do objeto
@@ -23,6 +43,7 @@
         if(!this.alive){
             return;
         } else {
+            this.setSightDirection("U");
             this.#y -= this.moveSpeed*this.canMoveUp();
         }
     }
@@ -31,6 +52,7 @@
         if(!this.alive){
             return;
         } else {
+            this.setSightDirection("D");
             this.#y += this.moveSpeed*this.canMoveDown();
         }
     }
@@ -39,6 +61,7 @@
         if(!this.alive){
             return;
         } else {
+            this.setSightDirection("L");
             this.#x -= this.moveSpeed*this.canMoveLeft();
         }
     }
@@ -47,6 +70,7 @@
         if(!this.alive){
             return;
         } else {
+            this.setSightDirection("R");
             this.#x += this.moveSpeed*this.canMoveRight();
         }
     }
@@ -82,6 +106,14 @@
 
     getHP(){
         return this.#hp;
+    }
+
+    getSightDirection(){
+        return this.#sightDirection;
+    }
+
+    setSightDirection(dir){
+        this.#sightDirection = dir;
     }
 
     //Funções Set
