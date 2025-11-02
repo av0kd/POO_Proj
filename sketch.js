@@ -13,6 +13,11 @@ var canvaConf;
 
 
 function preload(){
+    escuridao = loadImage('/assets/darkness.png');
+    playerImgU = loadImage('/assets/playerU.png');
+    playerImgD = loadImage('/assets/playerD.png');
+    playerImgR = loadImage('/assets/playerR.png');
+    playerImgL = loadImage('/assets/playerL.png');
     parede = loadImage('/assets/img_01.png');
     caminho = loadImage('/assets/img_02.png');
     end = loadImage('/assets/img_03.png');
@@ -34,20 +39,20 @@ function setup(){
     if(dificulty == 1){
         mapConfig = generateMaze(19);
         nodeEnd = arrayShuffle(nodeEnd);
-        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"red",10,2, 120);
-        console.log(nodeEnd[0] + "  -  " + nodeEnd[1]);
+        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120);
     }
 }
 
 function draw(){
     //console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
     /*background(0);
-    translate(width/2 - player.x-70, height/2 - player.y-70);
+    translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
     showMap();
 
 
     image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
     player.checkDeath();
+    
     if(player.isAlive()){
         player.show();
         player.moveMap();
@@ -58,6 +63,7 @@ function draw(){
         inimigos[i].show();
         inimigos[i].randomMove();
         inimigos[i].atacar(player);
+        //console.log(inimigos[i].size);
     }*/ //tudo na func jogo();
 
     //console.log("Vida do player: " + player.hp);
@@ -102,7 +108,7 @@ function draw(){
 
 function mousePressed()
 {
-    
+    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
 }
 
 function criarInimigo(x, y, cor, hp, speed, size){
