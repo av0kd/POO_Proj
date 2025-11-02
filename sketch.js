@@ -36,11 +36,14 @@ function setup(){
     centerCanvas();
         menu = new Menu(menuT1);
         menu.criarBotoes();
-    if(dificulty == 1){
         mapConfig = generateMaze(19);
         nodeEnd = arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120);
-    }
+     /*if(dificulty == 1){
+        mapConfig = generateMaze(19);
+        nodeEnd = arrayShuffle(nodeEnd);
+        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120);
+    }*/
 }
 
 function draw(){
@@ -142,8 +145,7 @@ function Jogar()
     player.show(player.size);
     player.moveMap();*/
 
-
-     background(0);
+   /* background(0);
     translate(width/2 - player.x-70, height/2 - player.y-70);
     showMap();
 
@@ -166,4 +168,39 @@ function Jogar()
         displayFrameCount();
     }
     //menuT1 = loadImage('/assets/deadly_whisper.png')
+
+    */
+
+
+
+
+
+     //console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
+    background(0);
+    translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
+    showMap();
+
+
+    image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
+    player.checkDeath();
+    
+    if(player.isAlive()){
+        player.show();
+        player.moveMap();
+    }
+    displayStamina();
+    
+    for(let i in inimigos){
+        inimigos[i].show();
+        inimigos[i].randomMove();
+        inimigos[i].atacar(player);
+        //console.log(inimigos[i].size);
+    }
+    //console.log("Vida do player: " + player.hp);
+    //console.log(inimigos.length);
+    //pleaseMove();
+    if(stillWants && (frameCount % 120 == 0)){
+        displayFrameCount();
+    }
+    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
 }
