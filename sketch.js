@@ -51,7 +51,7 @@ function draw(){
         player.show();
         player.moveMap();
     }
-    displayStamina();
+    
     
     for(let i in inimigos){
         inimigos[i].show();
@@ -85,7 +85,8 @@ function arrayShuffle(array){
     }
      return arrCpy;
 }
-
+/*
 function displayStamina(){
+    displayStamina();
     document.getElementById('Stamina').innerHTML = "Estamina do jogador: " + player.stamina.toFixed(2);
-}
+}*/

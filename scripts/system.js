@@ -1,4 +1,5 @@
 
+/*
 var stillWants = true;
 
 function displayFrameCount(){
@@ -9,3 +10,4 @@ function displayFrameCount(){
 function noWant(){
     stillWants = false;
 }
+    */
