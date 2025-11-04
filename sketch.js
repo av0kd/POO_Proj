@@ -25,7 +25,7 @@ function centerCanvas() {
 
 function setup(){
     frameRate(120);
-    canvaConf = createCanvas(1800, 1800);
+    canvaConf = createCanvas(800, 800);
     centerCanvas();
     if(dificulty == 1){
         mapConfig = generateMaze(19);
@@ -63,7 +63,7 @@ function draw(){
     if(stillWants && (frameCount % 120 == 0)){
         displayFrameCount();
     }*/
-    //image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
+    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
 }
 
 function criarInimigo(x, y, cor, hp, speed, size, team){
