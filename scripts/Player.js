@@ -2,8 +2,8 @@ class Player extends Entidade {
     #speed;
     #running;
     stamina;
-    constructor(x, y, cor, hp, speed, size){
-        super(x, y, cor, hp, speed, size);
+    constructor(x, y, cor, hp, speed, size, team){
+        super(x, y, cor, hp, speed, size, team);
         this.stamina = 100;
         this.#speed = this.moveSpeed; // moveSpeed vai ser tratado como algo constante enquanto speed vai ser uma variavel.
         this.#running = false;

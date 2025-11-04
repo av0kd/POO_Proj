@@ -25,22 +25,25 @@ function centerCanvas() {
 
 function setup(){
     frameRate(120);
-    canvaConf = createCanvas(800, 800);
+    canvaConf = createCanvas(1800, 1800);
     centerCanvas();
     if(dificulty == 1){
-        mapConfig = generateMaze(13);
+        mapConfig = generateMaze(19);
         nodeEnd = arrayShuffle(nodeEnd);
-        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120);
+        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
+        while(nodeEnd.length > 2){
+            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,6,120,"enemy")
+            nodeEnd.pop();
+        }
     }
 }
 
 function draw(){
-    //console.log(Math.floor(player.y/tlMapSz) + " - " + Math.floor(player.x/tlMapSz) )
     background(0);
     translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
     showMap();
-
-
+    
+    
     image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
     player.checkDeath();
     
@@ -55,17 +58,16 @@ function draw(){
         inimigos[i].getPossibleDirections();
         inimigos[i].randomMove();
         //inimigos[i].atacar(player);
-        console.log(inimigos[i].directs);
     }
     /*
     if(stillWants && (frameCount % 120 == 0)){
         displayFrameCount();
     }*/
-    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
+    //image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
 }
 
-function criarInimigo(x, y, cor, hp, speed, size){
-    let inimigo = new Inimigo(x, y, cor, hp, speed, size);
+function criarInimigo(x, y, cor, hp, speed, size, team){
+    let inimigo = new Inimigo(x, y, cor, hp, speed, size, team);
     inimigos.push(inimigo);
 }
 

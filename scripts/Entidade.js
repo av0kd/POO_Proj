@@ -3,7 +3,7 @@
     #y;
     #hp;
     #sightDirection = "D";
-    constructor(x, y, cor, hp, speed, size){
+    constructor(x, y, cor, hp, speed, size, team){
      this.#x = Number(x);
      this.#y = Number(y);
      this.cor = cor;
@@ -11,6 +11,7 @@
      this.#hp = parseFloat(hp);
      this.moveSpeed = parseFloat(speed);
      this.size = parseInt(size);
+     this.team = team;
     }
 
     show(){
@@ -112,8 +113,44 @@
         return this.#sightDirection;
     }
 
+    getDirectionAsNum(){
+        switch(this.#sightDirection){
+                case("U"):
+                    return 0;
+                    break;
+                case("D"):
+                    return 1;
+                    break;
+                case("L"):
+                    return 2;
+                    break;
+                case("R"):
+                    return 3;
+                    break;
+        }
+    }
+
     setSightDirection(dir){
-        this.#sightDirection = dir;
+        if(typeof(dir) == "string"){
+            this.#sightDirection = dir
+        }
+        else{
+            switch(dir){
+                case 0:
+                    this.#sightDirection = "U";
+                    break;
+                case 1:
+                    this.#sightDirection = "D";
+                    break;
+                case 2:
+                    this.#sightDirection = "L";
+                    break;
+                case 3:
+                    this.#sightDirection = "R";
+                    break;
+            }
+        }
+        
     }
 
     //Funções Set
