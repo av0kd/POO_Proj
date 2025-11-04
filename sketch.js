@@ -32,7 +32,7 @@ function setup(){
         nodeEnd = arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
-            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,6,120,"enemy")
+            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,6,120,"Enemy")
             nodeEnd.pop();
         }
     }
