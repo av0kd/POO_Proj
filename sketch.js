@@ -28,7 +28,7 @@ function setup(){
     canvaConf = createCanvas(800, 800);
     centerCanvas();
     if(dificulty == 1){
-        mapConfig = generateMaze(19);
+        mapConfig = generateMaze(9);
         nodeEnd = arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){

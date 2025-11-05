@@ -84,7 +84,7 @@
     }
 
     canMoveDown(){
-        return (mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+4)] == 1 && mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+this.size-5)] == 1);
+        return (mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+4)] == 1 && mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+this.size-8)] == 1);
     }
 
     canMoveLeft(){
