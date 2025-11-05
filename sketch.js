@@ -1,4 +1,5 @@
 tlMapSz = 160;
+nodeEnd = [];
 mapConfig = [];
 inimigos = [];
 dificulty = 1;
@@ -28,11 +29,12 @@ function setup(){
     canvaConf = createCanvas(800, 800);
     centerCanvas();
     if(dificulty == 1){
-        mapConfig = generateMaze(9);
+        mapConfig = Map.generateMaze(15);
+        console.log(nodeEnd.length)
         nodeEnd = arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
-            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,6,120,"Enemy")
+            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,8,120,"Enemy");
             nodeEnd.pop();
         }
     }
@@ -41,7 +43,7 @@ function setup(){
 function draw(){
     background(0);
     translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
-    showMap();
+    Map.showMap();
     
     
     image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
