@@ -26,9 +26,3 @@ function setup(){
 function draw(){
     StateMachine.generalDraw();    
 }
-
-/*
-function displayStamina(){
-    displayStamina();
-    document.getElementById('Stamina').innerHTML = "Estamina do jogador: " + player.stamina.toFixed(2);
-}*/

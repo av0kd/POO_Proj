@@ -34,3 +34,9 @@ class Game{
         }
     }
 }
+
+/*
+function displayStamina(){
+    displayStamina();
+    document.getElementById('Stamina').innerHTML = "Estamina do jogador: " + player.stamina.toFixed(2);
+}*/
