@@ -12,9 +12,9 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
 
     - Um personagem controlado pelo jogador [X]
     
-    - Um conjunto de inimigos controlados pelo computador []
+    - Um conjunto de inimigos controlados pelo computador [X]
 
-    - O inimigo terá uma classe com várias instancias [] - Half Done
+    - O inimigo terá uma classe com várias instancias [X]
     
     - Retirar inimigos derrotados da tela []
 
@@ -42,13 +42,13 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
     
 ## Requisitos técnicos:
 # Herança:
-    - 3 Classes que herdem
-    - Cada classe filho tem mais atributos novos
+    - 3 Classes que herdem (FEITO) 
+    - Cada classe filho tem mais atributos novos 
 # Estático:
-    - Métodos estáticos (total?) 
+    - Métodos estáticos (FEITO) 
 # Polimorfismo:
-    3 usos dos métodos this();
-    3 usos dos métodos super();
+    3 usos dos métodos this(); (FEITO) 
+    3 usos dos métodos super(); (FEITO) 
     *Private
-    3 atributos privados em 3 classes
-    3 pares de get e set;
+    3 atributos privados em 3 classes 
+    3 pares de get e set; (FEITO) 
