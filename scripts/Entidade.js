@@ -80,19 +80,19 @@
     //Métodos de verificar posições --- analisam a posição no mapa de acordo com os parametros x e y do objeto
     
     canMoveUp(){
-        return (mapConfig[quadrante(this.#y)][quadrante(this.#x+5)] == 1 && mapConfig[quadrante(this.#y)][quadrante(this.#x+this.size-10)] == 1);
+        return (mapConfig[System.quadrante(this.#y)][System.quadrante(this.#x+5)] == 1 && mapConfig[System.quadrante(this.#y)][System.quadrante(this.#x+this.size-10)] == 1);
     }
 
     canMoveDown(){
-        return (mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+4)] == 1 && mapConfig[quadrante(this.#y+this.size)][quadrante(this.#x+this.size-8)] == 1);
+        return (mapConfig[System.quadrante(this.#y+this.size)][System.quadrante(this.#x+4)] == 1 && mapConfig[System.quadrante(this.#y+this.size)][System.quadrante(this.#x+this.size-8)] == 1);
     }
 
     canMoveLeft(){
-        return (mapConfig[quadrante(this.#y+4)][quadrante(this.#x)] == 1 && mapConfig[quadrante(this.#y+this.size-4)][quadrante(this.#x)] == 1);
+        return (mapConfig[System.quadrante(this.#y+4)][System.quadrante(this.#x)] == 1 && mapConfig[System.quadrante(this.#y+this.size-4)][System.quadrante(this.#x)] == 1);
     }
 
     canMoveRight(){
-        return (mapConfig[quadrante(this.#y+4)][quadrante(this.#x+this.size-4)] == 1 && mapConfig[quadrante(this.#y+this.size-4)][quadrante(this.#x+this.size-4)] == 1);
+        return (mapConfig[System.quadrante(this.#y+4)][System.quadrante(this.#x+this.size-4)] == 1 && mapConfig[System.quadrante(this.#y+this.size-4)][System.quadrante(this.#x+this.size-4)] == 1);
     }
 
 

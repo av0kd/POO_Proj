@@ -139,8 +139,8 @@ class Inimigo extends Entidade {
 
 
     getPossibleDirections(){
-        let quadX = quadrante(this.getPosX());
-        let quadY = quadrante(this.getPosY());
+        let quadX = System.quadrante(this.getPosX());
+        let quadY = System.quadrante(this.getPosY());
         
         //se o quadrado de cima é caminho
         if(mapConfig[quadY-1][quadX] == 1){
@@ -182,6 +182,11 @@ class Inimigo extends Entidade {
         return whereToGo.length == 0?indx:whereToGo[Math.floor(Math.random()*whereToGo.length)];
     }
 
+    static criarInimigo(x, y, cor, hp, speed, size, team){
+        let inimigo = new Inimigo(x, y, cor, hp, speed, size, team);
+        inimigos.push(inimigo);
+}
+
 
     
 }
@@ -200,14 +205,14 @@ class Inimigo extends Entidade {
 
 getPossibleDirections(){
         let edges = [
-            quadrante(this.getPosY())-this.size,//0 | topo-1
-            quadrante(this.getPosY()),//1 | topo
-            quadrante(this.getPosY())+this.size,//2  | baixo
-            quadrante(this.getPosY())+this.size*2,//3  | baixo+1
-            quadrante(this.getPosX())-this.size,//4 || esquerda -1 
-            quadrante(this.getPosX()),//5  | esquerda
-            quadrante(this.getPosX())+this.size,//6    |  direita
-            quadrante(this.getPosX())+this.size*2//7   | direita +1
+            System.quadrante(this.getPosY())-this.size,//0 | topo-1
+            System.quadrante(this.getPosY()),//1 | topo
+            System.quadrante(this.getPosY())+this.size,//2  | baixo
+            System.quadrante(this.getPosY())+this.size*2,//3  | baixo+1
+            System.quadrante(this.getPosX())-this.size,//4 || esquerda -1 
+            System.quadrante(this.getPosX()),//5  | esquerda
+            System.quadrante(this.getPosX())+this.size,//6    |  direita
+            System.quadrante(this.getPosX())+this.size*2//7   | direita +1
         ];
         
         //se o quadrado de cima é caminho

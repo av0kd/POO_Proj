@@ -1,10 +1,10 @@
-tlMapSz = 160;
-nodeEnd = [];
-mapConfig = [];
-inimigos = [];
-dificulty = 1;
+var tlMapSz = 160;
+var nodeEnd = [];
+var mapConfig = [];
+var inimigos = [];
+var dificulty = 1;
 var canvaConf;
-let player;
+var player;
 
 
 function preload(){
@@ -16,77 +16,17 @@ function preload(){
     parede = loadImage('/assets/img_01.png');
     caminho = loadImage('/assets/img_02.png');
     end = loadImage('/assets/img_03.png');
-}
-
-function centerCanvas() {
-    var canvaX = (windowWidth - width) / 2;
-    var canvaY = (windowHeight - height) / 2;
-    canvaConf.position(canvaX, canvaY);
+    compass_arrow = loadImage('/assets/seta.png')
 }
 
 function setup(){
-    frameRate(120);
-    canvaConf = createCanvas(800, 800);
-    centerCanvas();
-    if(dificulty == 1){
-        mapConfig = Map.generateMaze(15);
-        console.log(nodeEnd.length)
-        nodeEnd = arrayShuffle(nodeEnd);
-        player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
-        while(nodeEnd.length > 2){
-            criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,8,120,"Enemy");
-            nodeEnd.pop();
-        }
-    }
+    StateMachine.generalSetup();
 }
 
 function draw(){
-    background(0);
-    translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
-    Map.showMap();
-    
-    
-    image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
-    player.checkDeath();
-    
-    if(player.isAlive()){
-        player.show();
-        player.moveMap();
-    }
-    
-    
-    for(let i in inimigos){
-        inimigos[i].show();
-        inimigos[i].getPossibleDirections();
-        inimigos[i].randomMove();
-        //inimigos[i].atacar(player);
-    }
-    /*
-    if(stillWants && (frameCount % 120 == 0)){
-        displayFrameCount();
-    }*/
-    image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
+    StateMachine.generalDraw();    
 }
 
-function criarInimigo(x, y, cor, hp, speed, size, team){
-    let inimigo = new Inimigo(x, y, cor, hp, speed, size, team);
-    inimigos.push(inimigo);
-}
-
-function quadrante(valor){
-    return valor < tlMapSz?0:floor(valor/tlMapSz);
-}
-
-function arrayShuffle(array){
-    let arrCpy = [...array];
-    for(let i = arrCpy.length-1; i > 0; i--){
-        let randPos = Math.floor(Math.random()*(i+1));
-        let aux = arrCpy[i];
-        arrCpy[i] = arrCpy[randPos]
-        arrCpy[randPos] = aux;
-    }
-     return arrCpy;
-}
 /*
 function displayStamina(){
     displayStamina();

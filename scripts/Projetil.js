@@ -1,11 +1,10 @@
 class Projetil extends Entidade {
     constructor(x, y, cor, speed, size, direction, team){
-        super(x, y, cor, 1, speed, size);
+        super(x, y, cor, 1, speed, size, team);
         this.direction = direction;
-        this.team = team; // "Inimigo" ou "Player";
     }
     
-    bulletMove(entidade){
+    bulletMove(){
         switch(this.getSightDirection()){
             case("U"):
                 this.moveUp();
@@ -20,6 +19,11 @@ class Projetil extends Entidade {
                 this.moveRight();
                 break;
         }
+    }
+
+    showBala(){
+        fill(this.cor);
+        square(this.getPosX(), this.getPosY(), this.size);
     }
 
 }
