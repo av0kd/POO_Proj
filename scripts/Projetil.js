@@ -1,6 +1,6 @@
 class Projetil extends Entidade {
     constructor(x, y, cor, speed, size, direction, team){
-        super(x, y, cor, 1, speed, size, team);
+        super(x, y, cor, 1, speed, size);
         this.direction = direction;
     }
     
@@ -19,6 +19,7 @@ class Projetil extends Entidade {
                 this.moveRight();
                 break;
         }
+
     }
 
     showBala(){
