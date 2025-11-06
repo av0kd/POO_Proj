@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 # Ignorar configurações do VS Code
 .vscode/
+=======
+.vs/
+>>>>>>> 9c8120f (Eu odeio isso)
