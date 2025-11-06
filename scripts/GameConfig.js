@@ -8,7 +8,7 @@ class Game{
             Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,8,120,"Enemy");
             nodeEnd.pop();   
         }
-        bala = new Projetil(player.getPosX() + player.radius/2,player.getPosY()+player.radius/2, "red", 2, 50, player.getSightDirection(), "Player");
+        //bala = new Projetil(player.getPosX() + player.radius/2,player.getPosY()+player.radius/2, "red", 2, 50, player.getSightDirection(), "Player");
     }
 
     static myDraw(){
@@ -22,7 +22,7 @@ class Game{
         if(player.isAlive()){
             player.show();
             player.moveMap();
-            bala.showBala();
+            //bala.showBala();
         }
         
         
