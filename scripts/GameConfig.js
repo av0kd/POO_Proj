@@ -12,19 +12,17 @@ class Game{
     }
 
     static myDraw(){
-        translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
+        push();
+        this.centerCanvaOnPlayer();
         Map.showMap();
-        
-        image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
-        
-        player.checkDeath();
+        Map.drawEndPoint();
         
         if(player.isAlive()){
+            player.checkDeath();
             player.show();
             player.moveMap();
             //bala.showBala();
         }
-        
         
         for(let i in inimigos){
             inimigos[i].show();
@@ -32,6 +30,21 @@ class Game{
             inimigos[i].randomMove();
             //inimigos[i].atacar(player);
         }
+
+        this.showDarkness();
+
+        pop();
+
+        HUD.showHUD();
+
+    }
+
+    static centerCanvaOnPlayer(){
+        translate(width/2 - player.getPosX()-70, height/2 - player.getPosY()-70);
+    }
+
+    static showDarkness(){
+        image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
     }
 }
 

@@ -16,7 +16,8 @@ function preload(){
     parede = loadImage('/assets/img_01.png');
     caminho = loadImage('/assets/img_02.png');
     end = loadImage('/assets/img_03.png');
-    compass_arrow = loadImage('/assets/seta.png')
+    compass_arrow = loadImage('/assets/seta.png');
+    compass_body = loadImage('/assets/bussola_corpo.png');
 }
 
 function setup(){

@@ -18,8 +18,7 @@ class StateMachine{
             Menu.myDraw();
         }
         else if(dificulty == 1 || dificulty == 2 || dificulty == 3){
-            Game.myDraw();
-            HUD.showHUD();    
+            Game.myDraw();    
         }
     }
 }
