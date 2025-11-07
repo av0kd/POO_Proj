@@ -43,12 +43,19 @@ class Player extends Entidade {
         if (keyIsDown(83)||keyIsDown(DOWN_ARROW)) {
             this.moveDown();
         }
+        let cooldown = 1;
+        if(keyIsDown(70) || keyIsDown(102)){
+            let bala = new Projetil(this.getPosX() + this.size/2, this.getPosY() + this.size/2, "red", 10, 20, this.getSightDirection(), "Player");
+            municao.push(bala);
+        }
     }
 
     //gets
     isPlayerRunning() {
         return this.#running == true ? true : false; 
     }
+
+
 
     /*getStamina(){
         return this.stamina;

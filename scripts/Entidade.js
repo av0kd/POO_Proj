@@ -182,13 +182,13 @@
         }
     }
 
-    dano(entidade){
-        entidade.setHP(-0.05);
+    dano(numero,entidade){
+        entidade.setHP(-numero);
      }
 
-     #distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.
-         let distancia_x = Math.abs(entidade.getPosX() - this.x);
-         let distancia_y = Math.abs(entidade.getPosY() - this.y);
+     distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.
+         let distancia_x = Math.abs(entidade.getPosX() - this.getPosX());
+         let distancia_y = Math.abs(entidade.getPosY() - this.getPosY());
          let quadradoDistancia = Math.sqrt(Math.pow(distancia_x, 2) + Math.pow(distancia_y, 2));
 
          return quadradoDistancia;

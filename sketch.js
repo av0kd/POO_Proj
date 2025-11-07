@@ -2,6 +2,7 @@ var tlMapSz = 160;
 var nodeEnd = [];
 var mapConfig = [];
 var inimigos = [];
+var municao = [];
 var dificulty = 1;
 var canvaConf;
 var player;
