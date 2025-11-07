@@ -1,3 +1,5 @@
+
+// StateMachine.js
 class StateMachine{
     static generalSetup(){
         frameRate(120);
@@ -22,4 +24,6 @@ class StateMachine{
             HUD.showHUD();    
         }
     }
+
 }
+  

@@ -1,13 +1,14 @@
+
+// MenuConfig.js
 class MenuC{
     static mySetup(){
-        frameRate(120);
-    canvaConf = createCanvas(800, 800);
-    centerCanvas();
-        menu = new Menu(menuT1);
-        menu.criarBotoes();
+        Menu = new Menu(menuBg);
+        Menu.criarBotoes();
+        console.log("Menu Setup completo");
     }
 
     static myDraw(){
-        menu.mostrar();
+        Menu.mostrar();
     }
 }
+  

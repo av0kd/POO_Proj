@@ -1,8 +1,9 @@
+// sketch.js
 var tlMapSz = 160;
 var nodeEnd = [];
 var mapConfig = [];
 var inimigos = [];
-var dificulty = 1;
+var dificulty = 0;
 var canvaConf;
 var player;
 
@@ -17,6 +18,7 @@ function preload(){
     caminho = loadImage('/assets/img_02.png');
     end = loadImage('/assets/img_03.png');
     compass_arrow = loadImage('/assets/seta.png')
+    menuBg = loadImage('/assets/DW.png');
 }
 
 function setup(){
@@ -26,3 +28,4 @@ function setup(){
 function draw(){
     StateMachine.generalDraw();    
 }
+  
