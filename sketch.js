@@ -3,6 +3,7 @@ var nodeEnd = [];
 var mapConfig = [];
 var inimigos = [];
 var municao = [];
+var collectables = [];
 var dificulty = 1;
 var canvaConf;
 var player;

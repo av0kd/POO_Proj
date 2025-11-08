@@ -8,6 +8,7 @@ class Game{
             Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,0,120,"Enemy");
             nodeEnd.pop();   
         }
+        collectables.push(new Collectable());
         //bala = new Projetil(player.getPosX() + player.radius/2,player.getPosY()+player.radius/2, "red", 2, 50, player.getSightDirection(), "Player");
     }
 
@@ -16,7 +17,9 @@ class Game{
         this.centerCanvaOnPlayer();
         Map.showMap();
         Map.drawEndPoint();
-        
+        collectables[0].show();
+
+
         if(player.isAlive()){
             player.checkDeath();
             player.show();
