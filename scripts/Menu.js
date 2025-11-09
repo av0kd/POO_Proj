@@ -12,7 +12,7 @@ class Menu
   criarBotoes()
   {
       
-  this.BotaoIniciar = new Botao(0, 0, 120, 60,"JOGAR",() => {this.BotaoIniciar.esconder();dificulty = 1; StateMachine.generalSetup();},true);
+  this.BotaoIniciar = new Botao(0, 0, 120, 60,"JOGAR",() => {this.BotaoIniciar.esconder();dificulty = 4; StateMachine.generalSetup();},true);
 console.log("botão criado", this.BotaoIniciar.botao)
   }
 
@@ -29,6 +29,4 @@ console.log("botão criado", this.BotaoIniciar.botao)
 
   }
 }
-   console.log("Menu.js carregado!");
-window.Menu = Menu; // fo
      

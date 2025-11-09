@@ -4,8 +4,6 @@ class Inimigo extends Entidade {
     canChangeDirection = true;
     lastX;
     lastY;
-    inicialX;
-    inicialY;
      
 
     constructor(x, y, cor, hp, speed, size, team){
@@ -13,8 +11,6 @@ class Inimigo extends Entidade {
         this.radius = ((this.size*Math.sqrt(2))/2);
         this.lastX = Math.floor(x/160);
         this.lastY = Math.floor(y/160);
-        this.inicialX = this.lastX;
-        this.inicialY = this.lastY;
         this.setSightDirection(0);
     }
 
@@ -28,10 +24,9 @@ class Inimigo extends Entidade {
     }
 
     atacar(player){
-        //console.log("Posição X:" + player.getPosX() + " Posição Y: " + player.getPosY() + " Distancia: " + this.#distanciaDoPlayer(player));
         if(this.#distanciaDoPlayer(player) <= this.radius){
             console.log("AIAI\n");
-            this.dano(player);
+            this.dano(0.5,player);
         }
     }
 
@@ -39,6 +34,7 @@ class Inimigo extends Entidade {
         let direc = this.getSightDirection();
         let cQuadX = this.getPosX() > 160? this.getPosX() : 162;
         let cQuadY = this.getPosY() > 160? this.getPosY() : 162;
+        this.getPossibleDirections();
         if(direc == "U" && Math.floor((cQuadY+this.size+20)/160) != this.lastY){ 
             
             this.lastY = Math.floor(cQuadY/160);
@@ -200,52 +196,3 @@ class Inimigo extends Entidade {
 //Por exemplo, inimigos fortes que o player precisa ver antes dos mais fracos terão prioridade maior, a fim de não serem escondidos por outros.
 
 //^Isso tudo será inútil se os inimigos tiverem colisão!
-
-/*
-
-getPossibleDirections(){
-        let edges = [
-            System.quadrante(this.getPosY())-this.size,//0 | topo-1
-            System.quadrante(this.getPosY()),//1 | topo
-            System.quadrante(this.getPosY())+this.size,//2  | baixo
-            System.quadrante(this.getPosY())+this.size*2,//3  | baixo+1
-            System.quadrante(this.getPosX())-this.size,//4 || esquerda -1 
-            System.quadrante(this.getPosX()),//5  | esquerda
-            System.quadrante(this.getPosX())+this.size,//6    |  direita
-            System.quadrante(this.getPosX())+this.size*2//7   | direita +1
-        ];
-        
-        //se o quadrado de cima é caminho
-        if((mapConfig[edges[0]][edges[5]] == 1 && mapConfig[edges[0]][edges[6]] == 1) ||
-           (mapConfig[edges[1]][edges[5]] == 1 && mapConfig[edges[1]][edges[6]] == 1) //&& this.canMoveUp
-        ){
-            this.directs[0] = 1;
-        }
-        else{this.directs[0] = 0;}
-
-        //se o quadrado de baixo é caminho
-        if((mapConfig[edges[2]][edges[5]] == 1 && mapConfig[edges[2]][edges[6]] == 1) ||
-           (mapConfig[edges[3]][edges[4]] == 1 && mapConfig[edges[3]][edges[5]] == 1) //&& this.canMoveDown
-        ){
-            this.directs[1] = 1;
-        }
-        else{this.directs[1] = 0;}
-
-        //se o quadrado da esquerda é caminho
-        if((mapConfig[edges[1]][edges[4]] == 1 && mapConfig[edges[1]][edges[5]] == 1) ||
-           (mapConfig[edges[2]][edges[4]] == 1 && mapConfig[edges[2]][edges[5]] == 1) //&&  this.canMoveLeft
-        ){
-            this.directs[2] = 1;
-        }
-        else{this.directs[2] = 0;}
-
-        //se o quadrado da direita é caminho
-        if((mapConfig[edges[2]][edges[6]] == 1 && mapConfig[edges[2]][edges[7]] == 1) ||
-           (mapConfig[edges[3]][edges[6]] == 1 && mapConfig[edges[3]][edges[7]] == 1) //&&  this.canMoveRight
-        ){
-            this.directs[3] = 1;
-        }
-        else{this.directs[3] = 0;}
-    }
-
-    */

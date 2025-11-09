@@ -10,6 +10,8 @@ class StateMachine{
         }
         else if(dificulty == 1 || dificulty == 2 || dificulty == 3){
             Game.mySetup();   
+        }else if(dificulty == 4){
+            DificuldadeC.mySetup();
         }
     }
 
@@ -18,10 +20,12 @@ class StateMachine{
         
         if(dificulty == 0){
             MenuC.myDraw();
+           
         }
         else if(dificulty == 1 || dificulty == 2 || dificulty == 3){
-            Game.myDraw();
-            HUD.showHUD();    
+            Game.myDraw();    
+        }else if(dificulty == 4){
+            DificuldadeC.myDraw();
         }
     }
 

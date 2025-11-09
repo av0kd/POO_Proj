@@ -3,6 +3,7 @@
     #y;
     #hp;
     #sightDirection = "D";
+    alive;
     constructor(x, y, cor, hp, speed, size, team){
      this.#x = Number(x);
      this.#y = Number(y);
@@ -14,8 +15,9 @@
      this.team = team;
     }
 
-    show(){
-        if(this.cor == "player"){
+    show(id){
+        
+        if(this.team == "Player"){
             switch(this.#sightDirection){
                 case("U"):
                     image(playerImgU, this.getPosX(), this.getPosY(), this.size, this.size);
@@ -31,9 +33,26 @@
                     break;
             }
         }
+        else if(this.team == "Enemy"){
+            fill(this.cor);
+            
+            if(this.alive){
+                square(this.getPosX(), this.getPosY(), this.size);
+            }
+            else{
+                collectables.push(new Collectable(0, 60, this.#x+this.size/4, this.#y+this.size/4));
+                inimigos.splice(id, 1);
+            }
+        }
         else{
             fill(this.cor);
-            square(this.getPosX(), this.getPosY(), this.size);
+            
+            if(this.alive){
+                square(this.getPosX(), this.getPosY(), this.size);
+            }
+            else{
+                municao.splice(id, 1);
+            }
         }
         
     }
@@ -41,39 +60,27 @@
     //Métodos de movimento --- Incrementam ou decrementam de acordo com o atributo moveSpeed do objeto
     
     moveUp(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("U");
-            this.#y -= this.moveSpeed*this.canMoveUp();
-        }
+            this.#y -= this.moveSpeed*this.canMoveUp();}
     }
 
     moveDown(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("D");
-            this.#y += this.moveSpeed*this.canMoveDown();
-        }
+            this.#y += this.moveSpeed*this.canMoveDown();}
     }
 
-    moveLeft(){
-        if(!this.alive){
-            return;
-        } else {
+    moveLeft(){    
+        if(this.alive){
             this.setSightDirection("L");
-            this.#x -= this.moveSpeed*this.canMoveLeft();
-        }
+            this.#x -= this.moveSpeed*this.canMoveLeft();}
     }
 
     moveRight(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("R");
-            this.#x += this.moveSpeed*this.canMoveRight();
-        }
+            this.#x += this.moveSpeed*this.canMoveRight();}
     }
 
 
@@ -115,18 +122,14 @@
 
     getDirectionAsNum(){
         switch(this.#sightDirection){
-                case("U"):
-                    return 0;
-                    break;
-                case("D"):
-                    return 1;
-                    break;
-                case("L"):
-                    return 2;
-                    break;
-                case("R"):
-                    return 3;
-                    break;
+            case("U"):
+                return 0;
+            case("D"):
+                return 1;
+            case("L"):
+                return 2;
+            case("R"):
+                return 3;
         }
     }
 
@@ -175,25 +178,21 @@
 
 
     isAlive(){
-        if(this.alive == true){
-            return true;
-        } else {
-            return false;
-        }
+        return this.alive;
     }
 
-    dano(entidade){
-        entidade.setHP(-0.05);
-     }
+    dano(numero,entidade){
+        entidade.setHP(-numero);
+    }
 
-     #distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.
-         let distancia_x = Math.abs(entidade.getPosX() - this.x);
-         let distancia_y = Math.abs(entidade.getPosY() - this.y);
-         let quadradoDistancia = Math.sqrt(Math.pow(distancia_x, 2) + Math.pow(distancia_y, 2));
-
-         return quadradoDistancia;
-     }
-
+    distanciaDaEntidade(entidade) { //Mede a distância do centro do objeto até o centro de outra entidade.
+        let distancia_x = Math.abs(entidade.getPosX() - this.getPosX());
+        let distancia_y = Math.abs(entidade.getPosY() - this.getPosY());
+        let quadradoDistancia = Math.sqrt(Math.pow(distancia_x, 2) + Math.pow(distancia_y, 2));
+    
+        return quadradoDistancia;
+    }
+  }
      /*#verificarColisão(entidade) { //Retorna 1 se a distância for maior do que o tamanho(ou seja, não estáo se tocando) e 0 se a distância for menor (estão se tocando).
          if (this.#distanciaDaEntidade(entidade) >= this.size) {
              return 1;
@@ -201,5 +200,3 @@
              return 0;
          }
      }*/
-
-}

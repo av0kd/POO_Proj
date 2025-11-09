@@ -16,7 +16,7 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
 
     - O inimigo terá uma classe com várias instancias [X]
     
-    - Retirar inimigos derrotados da tela []
+    - Retirar inimigos derrotados da tela [X]
 
     - Coletáveis []
 
@@ -33,22 +33,18 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
     ... 
     Eliel - 
     ...
-    Enzo - 
-        *Organizar codigo
-        *Ajustar as minhas classes para atender requisitos tecnicos
-        *Implementar sistema lógico de movimento para IA
-        *Adicionar colisão entre entidades
-        *Adicionar spawn aleatório junto com darlan
+    Enzo -
+    ...
     
 ## Requisitos técnicos:
 # Herança:
     - 3 Classes que herdem (FEITO) 
-    - Cada classe filho tem mais atributos novos 
+    - Cada classe filho tem mais atributos novos (FEITO) 
 # Estático:
     - Métodos estáticos (FEITO) 
 # Polimorfismo:
     3 usos dos métodos this(); (FEITO) 
     3 usos dos métodos super(); (FEITO) 
     *Private
-    3 atributos privados em 3 classes 
+    3 atributos privados em 3 classes (FEITO) 
     3 pares de get e set; (FEITO) 

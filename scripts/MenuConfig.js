@@ -1,13 +1,15 @@
 
 // MenuConfig.js
 class MenuC{
-    static mySetup(){
+    static mySetup()
+    {
         Menu = new Menu(menuBg);
         Menu.criarBotoes();
         console.log("Menu Setup completo");
     }
 
-    static myDraw(){
+    static myDraw()
+    {
         Menu.mostrar();
     }
 }

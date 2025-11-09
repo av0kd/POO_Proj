@@ -96,5 +96,8 @@ class Map{
         return countNeighboors == 1;
     }
 
+    static drawEndPoint(){
+        image(end, nodeEnd[1][1]*tlMapSz,nodeEnd[1][0]*tlMapSz, tlMapSz, tlMapSz);
+    }
 }
 

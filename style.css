@@ -6,3 +6,23 @@ html, body {
 canvas {
   display: block;
 }
+button {
+  background: linear-gradient(180deg, #2b0000, #000);
+  border: 2px solid #b00000;
+  color: #ffcccc;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #ff0000;
+  border-radius: 8px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(180deg, #600000, #200);
+  color: #fff;
+  text-shadow: 0 0 12px #ff2020;
+  box-shadow: 0 0 12px #ff0000;
+}
