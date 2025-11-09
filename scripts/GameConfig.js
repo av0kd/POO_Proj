@@ -1,14 +1,13 @@
 class Game{
     static mySetup(){
 
-        mapConfig = Map.generateMaze(11*dificulty);
+        mapConfig = Map.generateMaze(9*dificulty);
         nodeEnd = System.arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
-            Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,0,120,"Enemy");
+            Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,3.5,120,"Enemy");
             nodeEnd.pop();   
         }
-        collectables.push(new Collectable());
         //bala = new Projetil(player.getPosX() + player.radius/2,player.getPosY()+player.radius/2, "red", 2, 50, player.getSightDirection(), "Player");
     }
 
@@ -17,8 +16,12 @@ class Game{
         this.centerCanvaOnPlayer();
         Map.showMap();
         Map.drawEndPoint();
-        collectables[0].show();
-
+        Collectable.verifyPresence();
+        
+        for(let i in collectables){
+            collectables[i].show(i);
+        }
+        
 
         if(player.isAlive()){
             player.checkDeath();
@@ -30,7 +33,7 @@ class Game{
         //Projetil
         for(let i in municao){
             municao[i].bulletMove();
-            municao[i].showBala();
+            municao[i].show(i);
             for(let j in inimigos){
                 if(municao[i].checkColision(inimigos[j])){
                     municao[i].dano(10, inimigos[j]);
@@ -43,7 +46,7 @@ class Game{
         
         for(let i in inimigos){
             if(inimigos[i].isAlive()){
-            inimigos[i].show();
+            inimigos[i].show(i);
             inimigos[i].getPossibleDirections();
             inimigos[i].randomMove();
             //inimigos[i].atacar(player);

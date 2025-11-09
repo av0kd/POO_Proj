@@ -1,16 +1,32 @@
 class Collectable{
     #posX;
     #posY;
-    #type;
+    type;
     #collected;
     #size;
 
-    constructor(){
+    static lastSpotFrame = 0;
+
+    constructor(type){
         this.#collected = false
-        this.#type = 1;
-        this.setSize();
-        this.setRandomPos();
+        this.type = type;
+        this.configByType();
+    }
+
+    static verifyPresence(){
+        let found = false;
+
+        for (let i in collectables){
+            if(collectables[i].type != 0){
+                found = true;
+                break;}
+        }
         
+        if(!found){
+            this.lastSpotFrame < 600?this.lastSpotFrame++:collectables.push(new Collectable(1));}
+        else{
+            this.lastSpotFrame = 0;
+        }
     }
 
     setRandomPos(){
@@ -18,8 +34,12 @@ class Collectable{
         this.setPosY(nodeEnd[0][0]*tlMapSz+tlMapSz/2-this.#size/2);
     }
 
-    show(){
-        square(this.getPosX(),this.getPosY(),this.#size);
+    show(id){
+        (this.#playerDistance() < this.#size*2/3)?this.#collected = true:square(this.getPosX(),this.getPosY(),this.#size);
+
+        if(this.#collected){
+            collectables.splice(id,1);
+        }
     }
 
     getPosX(){
@@ -38,15 +58,22 @@ class Collectable{
         this.#posY = newVal;
     }
 
-    setSize(){
-        if(this.#type == 0){
+    configByType(){
+        if(this.type == 0){
             fill("blue");
             this.#size = 60;
         }
         else{
             fill("red");
             this.#size = 80;
+            this.setRandomPos();
         }
+    }
+
+    #playerDistance(){ //Mede a distância do centro do objeto até o centro de outra entidade.
+        let dX = Math.abs(player.getPosX() - this.getPosX());
+        let dY = Math.abs(player.getPosY() - this.getPosY());
+        return Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
     }
 
 }

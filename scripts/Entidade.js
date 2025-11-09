@@ -3,6 +3,7 @@
     #y;
     #hp;
     #sightDirection = "D";
+    alive;
     constructor(x, y, cor, hp, speed, size, team){
      this.#x = Number(x);
      this.#y = Number(y);
@@ -14,8 +15,8 @@
      this.team = team;
     }
 
-    show(){
-        if(this.cor == "player"){
+    show(id){
+        if(this.team == "Player"){
             switch(this.#sightDirection){
                 case("U"):
                     image(playerImgU, this.getPosX(), this.getPosY(), this.size, this.size);
@@ -31,9 +32,16 @@
                     break;
             }
         }
-        else{
+        else if(this.team == "Enemy"){
             fill(this.cor);
-            square(this.getPosX(), this.getPosY(), this.size);
+            if(this.alive){
+                square(this.getPosX(), this.getPosY(), this.size);}
+            else{
+                collectables.push(new Collectable(1));
+                collectables[collectables.length-1].setPosX();
+                collectables[collectables.length-1].setPosY();
+                inimigos.splice(id, 1);
+            }
         }
         
     }
@@ -41,39 +49,27 @@
     //Métodos de movimento --- Incrementam ou decrementam de acordo com o atributo moveSpeed do objeto
     
     moveUp(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("U");
-            this.#y -= this.moveSpeed*this.canMoveUp();
-        }
+            this.#y -= this.moveSpeed*this.canMoveUp();}
     }
 
     moveDown(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("D");
-            this.#y += this.moveSpeed*this.canMoveDown();
-        }
+            this.#y += this.moveSpeed*this.canMoveDown();}
     }
 
-    moveLeft(){
-        if(!this.alive){
-            return;
-        } else {
+    moveLeft(){    
+        if(this.alive){
             this.setSightDirection("L");
-            this.#x -= this.moveSpeed*this.canMoveLeft();
-        }
+            this.#x -= this.moveSpeed*this.canMoveLeft();}
     }
 
     moveRight(){
-        if(!this.alive){
-            return;
-        } else {
+        if(this.alive){
             this.setSightDirection("R");
-            this.#x += this.moveSpeed*this.canMoveRight();
-        }
+            this.#x += this.moveSpeed*this.canMoveRight();}
     }
 
 
@@ -171,11 +167,7 @@
 
 
     isAlive(){
-        if(this.alive == true){
-            return true;
-        } else {
-            return false;
-        }
+        return this.alive;
     }
 
     dano(numero,entidade){
