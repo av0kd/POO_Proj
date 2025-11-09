@@ -23,7 +23,7 @@ class Game{
         }
         
 
-        collectables[0].show();
+        //collectables[0].show(0);
 
         //Player
         if(player.isAlive()){
@@ -39,7 +39,7 @@ class Game{
             municao[i].checkDeletion();
             if(municao[i].isAlive()){
                 municao[i].bulletMove();
-                municao[i].show();
+                municao[i].showBala();
                 for(let j in inimigos){
                     //municao[i].checkDeletion(inimigos[j]);
                     municao[i].balear(inimigos[j]);

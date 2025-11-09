@@ -45,6 +45,7 @@ class Player extends Entidade {
         }
         let cooldown = 1;
         if(keyIsDown(70) || keyIsDown(102)){
+            console.log("Ola");
             let bala = new Projetil(this.getPosX() + this.size/2, this.getPosY() + this.size/2, "red", 10, 20, this.getSightDirection(), "Player");
             municao.push(bala);
         }
