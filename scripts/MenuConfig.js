@@ -3,14 +3,14 @@
 class MenuC{
     static mySetup()
     {
-        Menu = new Menu(menuBg);
-        Menu.criarBotoes();
+        this.menu = new Menu(menuBg);
+        this.menu.criarBotoes();
         console.log("Menu Setup completo");
     }
 
     static myDraw()
     {
-        Menu.mostrar();
+        this.menu.mostrar();
     }
 }
   

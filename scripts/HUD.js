@@ -3,6 +3,7 @@ class HUD{
     static showHUD(){
         this.showCompass();
         this.BotaoSair();
+        //this.barraVida(20, 80, 200, 20, player.stamina);
     }
 
     static showCompass(){
@@ -31,7 +32,7 @@ class HUD{
             {
             this.BotaoSairInstance = new Botao(10, 10, 100, 50, "SAIR",() => {
                 this.BotaoSairInstance.esconder();
-                
+
                 inimigos = [];
                 municao = [];
                 collectables = [];
@@ -44,5 +45,27 @@ class HUD{
         }
         this.BotaoSairInstance.mostrar();
     }
+
+    /*static barraVida(x, y, largura, altura, porcentagem)
+    {
+        push();
+        stroke(0);
+        fill(255, 0, 0);
+        rect(x, y, largura, altura);
+        fill(0, 255, 0);
+        rect(x, y, largura * (porcentagem / 100), altura);
+        pop();
+    }*/
+
+    /*static barraStamina(x, y, largura, altura, porcentagem)
+{
+    push();
+    stroke(0);
+    fill(80);
+    rect(x, y, largura, altura);
+    fill(0, 150, 255);
+    rect(x, y, largura * (porcentagem / 100), altura);
+    pop();
+}*/
 
 }
