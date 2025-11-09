@@ -16,6 +16,7 @@
     }
 
     show(id){
+        
         if(this.team == "Player"){
             switch(this.#sightDirection){
                 case("U"):
@@ -34,12 +35,12 @@
         }
         else if(this.team == "Enemy"){
             fill(this.cor);
+            
             if(this.alive){
-                square(this.getPosX(), this.getPosY(), this.size);}
+                square(this.getPosX(), this.getPosY(), this.size);
+            }
             else{
-                collectables.push(new Collectable(1));
-                collectables[collectables.length-1].setPosX();
-                collectables[collectables.length-1].setPosY();
+                collectables.push(new Collectable(0, 60, this.#x+this.size/4, this.#y+this.size/4));
                 inimigos.splice(id, 1);
             }
         }

@@ -10,6 +10,7 @@ var player;
 
 
 function preload(){
+    soul = loadImage('/assets/enemy_soul.png'); 
     escuridao = loadImage('/assets/darkness.png');
     playerImgU = loadImage('/assets/playerU.png');
     playerImgD = loadImage('/assets/playerD.png');

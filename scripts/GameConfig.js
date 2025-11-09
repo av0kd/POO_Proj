@@ -1,11 +1,11 @@
 class Game{
     static mySetup(){
 
-        mapConfig = Map.generateMaze(9*dificulty);
+        mapConfig = Map.generateMaze(11*dificulty);
         nodeEnd = System.arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
-            Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',10,3.5,120,"Enemy");
+            Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',1,3.5,120,"Enemy");
             nodeEnd.pop();   
         }
         //bala = new Projetil(player.getPosX() + player.radius/2,player.getPosY()+player.radius/2, "red", 2, 50, player.getSightDirection(), "Player");
@@ -18,24 +18,24 @@ class Game{
         Map.drawEndPoint();
         Collectable.verifyPresence();
         
+        //coletaveis
         for(let i in collectables){
             collectables[i].show(i);
         }
-        
 
-        //collectables[0].show(0);
 
         //Player
         if(player.isAlive()){
             player.checkDeath();
             player.show();
-            player.moveMap(); //Pode chamar projeteis
+            player.moveMap();
             //bala.showBala();
         }
         
 
         //Projetil
         for(let i in municao){
+
             municao[i].checkDeletion();
             if(municao[i].isAlive()){
                 municao[i].bulletMove();
@@ -47,23 +47,22 @@ class Game{
                         municao[i].alive = false;
                     }
                 }
-            } else {
+            } 
+            else {
                 municao.splice(i, 1);
             }
 
         }
 
-        //Inimigos
         for(let i in inimigos){
             if(inimigos[i].isAlive()){
-            inimigos[i].show(i);
-            inimigos[i].getPossibleDirections();
-            inimigos[i].randomMove();
-            inimigos[i].atacar(player);
-            inimigos[i].checkDeath();
-            } else {
-                //Coletavel.spawn(inimigos[i].getPosX(), inimigos[i].getPosY()); //Spawnar algum coletavel
-                inimigos.splice(i, 1);
+                inimigos[i].show(i);
+                inimigos[i].randomMove();
+                inimigos[i].atacar(player);
+                inimigos[i].checkDeath();
+            }
+            else{
+                inimigos[i].show(i);
             }
         }
 

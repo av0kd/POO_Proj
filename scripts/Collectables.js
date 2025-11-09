@@ -7,10 +7,18 @@ class Collectable{
 
     static lastSpotFrame = 0;
 
-    constructor(type){
+    constructor(type, sz, x, y){
         this.#collected = false
         this.type = type;
-        this.configByType();
+        this.#size = sz;
+        if(type == 0){
+            this.#posX = x;
+            this.#posY = y;
+        }
+        else{
+            this.setRandomPos();
+        }
+        
     }
 
     static verifyPresence(){
@@ -23,7 +31,7 @@ class Collectable{
         }
         
         if(!found){
-            this.lastSpotFrame < 600?this.lastSpotFrame++:collectables.push(new Collectable(1));}
+            this.lastSpotFrame < 100?this.lastSpotFrame++:collectables.push(new Collectable(1,80));}
         else{
             this.lastSpotFrame = 0;
         }
@@ -35,11 +43,25 @@ class Collectable{
     }
 
     show(id){
-        (this.#playerDistance() < this.#size*2/3)?this.#collected = true:square(this.getPosX(),this.getPosY(),this.#size);
-
+        if(this.#playerDistance() < this.#size){
+            this.#collected = true}
+        
         if(this.#collected){
             collectables.splice(id,1);
+            return;
         }
+
+        if(collectables.length > 0){
+            
+            if(collectables[id].type == 0){
+                image(soul, this.getPosX(), this.getPosY(), this.#size, this.#size);
+            }
+            else{
+                
+                square(this.getPosX(),this.getPosY(),this.#size);
+            }
+        }
+
     }
 
     getPosX(){
@@ -56,18 +78,6 @@ class Collectable{
 
     setPosY(newVal){
         this.#posY = newVal;
-    }
-
-    configByType(){
-        if(this.type == 0){
-            fill("blue");
-            this.#size = 60;
-        }
-        else{
-            fill("red");
-            this.#size = 80;
-            this.setRandomPos();
-        }
     }
 
     #playerDistance(){ //Mede a distância do centro do objeto até o centro de outra entidade.

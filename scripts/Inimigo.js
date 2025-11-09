@@ -24,7 +24,6 @@ class Inimigo extends Entidade {
     }
 
     atacar(player){
-        //console.log("Posição X:" + player.getPosX() + " Posição Y: " + player.getPosY() + " Distancia: " + this.#distanciaDoPlayer(player));
         if(this.#distanciaDoPlayer(player) <= this.radius){
             console.log("AIAI\n");
             this.dano(0.5,player);
@@ -35,6 +34,7 @@ class Inimigo extends Entidade {
         let direc = this.getSightDirection();
         let cQuadX = this.getPosX() > 160? this.getPosX() : 162;
         let cQuadY = this.getPosY() > 160? this.getPosY() : 162;
+        this.getPossibleDirections();
         if(direc == "U" && Math.floor((cQuadY+this.size+20)/160) != this.lastY){ 
             
             this.lastY = Math.floor(cQuadY/160);
@@ -181,8 +181,10 @@ class Inimigo extends Entidade {
     static criarInimigo(x, y, cor, hp, speed, size, team){
         let inimigo = new Inimigo(x, y, cor, hp, speed, size, team);
         inimigos.push(inimigo);
-    }
+}
 
+
+    
 }
 
 
