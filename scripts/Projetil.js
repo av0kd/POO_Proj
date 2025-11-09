@@ -31,11 +31,18 @@ class Projetil extends Entidade {
 
     checkColision(entidade){
         //let radius = this.size/2;
-        if(this.distanciaDaEntidade(entidade) <= entidade.size/2){
+        if(this.distanciaDaEntidade(entidade) <= entidade.size){
             //this.dano(20, entidade);
             return true;
         }
         return false;
+    }
+
+    balear(entidade){
+        if(this.checkColision(entidade)){
+            this.dano(1, entidade);
+            console.log("Dei dano!");
+        }
     }
 
     checkDeletion(){

@@ -23,6 +23,9 @@ class Game{
         }
         
 
+        collectables[0].show();
+
+        //Player
         if(player.isAlive()){
             player.checkDeath();
             player.show();
@@ -30,20 +33,27 @@ class Game{
             //bala.showBala();
         }
         
+
         //Projetil
         for(let i in municao){
-            municao[i].bulletMove();
-            municao[i].show(i);
-            for(let j in inimigos){
-                if(municao[i].checkColision(inimigos[j])){
-                    municao[i].dano(10, inimigos[j]);
-                    console.log("Dei dano no: " + j + "!");
+            municao[i].checkDeletion();
+            if(municao[i].isAlive()){
+                municao[i].bulletMove();
+                municao[i].show();
+                for(let j in inimigos){
+                    //municao[i].checkDeletion(inimigos[j]);
+                    municao[i].balear(inimigos[j]);
+                    if(municao[i].checkColision(inimigos[j])){
+                        municao[i].alive = false;
+                    }
                 }
+            } else {
+                municao.splice(i, 1);
             }
 
         }
+
         //Inimigos
-        
         for(let i in inimigos){
             if(inimigos[i].isAlive()){
             inimigos[i].show(i);
@@ -51,6 +61,9 @@ class Game{
             inimigos[i].randomMove();
             //inimigos[i].atacar(player);
             inimigos[i].checkDeath();
+            } else {
+                //Coletavel.spawn(inimigos[i].getPosX(), inimigos[i].getPosY()); //Spawnar algum coletavel
+                inimigos.splice(i, 1);
             }
         }
 
