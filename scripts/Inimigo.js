@@ -27,7 +27,7 @@ class Inimigo extends Entidade {
         //console.log("Posição X:" + player.getPosX() + " Posição Y: " + player.getPosY() + " Distancia: " + this.#distanciaDoPlayer(player));
         if(this.#distanciaDoPlayer(player) <= this.radius){
             console.log("AIAI\n");
-            this.dano(player);
+            this.dano(0.5,player);
         }
     }
 

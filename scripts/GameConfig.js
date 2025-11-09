@@ -59,7 +59,7 @@ class Game{
             inimigos[i].show(i);
             inimigos[i].getPossibleDirections();
             inimigos[i].randomMove();
-            //inimigos[i].atacar(player);
+            inimigos[i].atacar(player);
             inimigos[i].checkDeath();
             } else {
                 //Coletavel.spawn(inimigos[i].getPosX(), inimigos[i].getPosY()); //Spawnar algum coletavel
