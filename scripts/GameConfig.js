@@ -29,6 +29,7 @@ class Game{
             player.checkDeath();
             player.show();
             player.moveMap();
+            player.shootHaste();
             //bala.showBala();
         }
         
@@ -38,18 +39,17 @@ class Game{
 
             municao[i].checkDeletion();
             if(municao[i].isAlive()){
+                municao[i].show(i);
                 municao[i].bulletMove();
-                municao[i].showBala();
                 for(let j in inimigos){
-                    //municao[i].checkDeletion(inimigos[j]);
                     municao[i].balear(inimigos[j]);
                     if(municao[i].checkColision(inimigos[j])){
                         municao[i].alive = false;
                     }
                 }
-            } 
-            else {
-                municao.splice(i, 1);
+            }
+            else{
+                municao[i].show();
             }
 
         }
@@ -58,7 +58,7 @@ class Game{
             if(inimigos[i].isAlive()){
                 inimigos[i].show(i);
                 inimigos[i].randomMove();
-                inimigos[i].atacar(player);
+                //inimigos[i].atacar(player);
                 inimigos[i].checkDeath();
             }
             else{

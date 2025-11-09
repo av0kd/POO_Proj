@@ -31,15 +31,22 @@ class Collectable{
         }
         
         if(!found){
-            this.lastSpotFrame < 100?this.lastSpotFrame++:collectables.push(new Collectable(1,80));}
+            this.lastSpotFrame < 1200?this.lastSpotFrame++:collectables.push(new Collectable(1,80));}
         else{
             this.lastSpotFrame = 0;
         }
     }
 
     setRandomPos(){
-        this.setPosX(nodeEnd[0][1]*tlMapSz+tlMapSz/2-this.#size/2);
-        this.setPosY(nodeEnd[0][0]*tlMapSz+tlMapSz/2-this.#size/2);
+        let randX = Math.floor(Math.random()*(mapConfig.length-2))+1;
+        let randY = Math.floor(Math.random()*(mapConfig.length-2))+1;
+        if(mapConfig[randY][randX] == 1 && (randY*tlMapSz != nodeEnd[0][1]*tlMapSz && randX*tlMapSz != nodeEnd[0][0]*tlMapSz) && (randY*tlMapSz != nodeEnd[1][1]*tlMapSz && randX*tlMapSz != nodeEnd[1][0]*tlMapSz)){
+            this.setPosX(randX*tlMapSz+tlMapSz/2-this.#size/2);
+            this.setPosY(randY*tlMapSz+tlMapSz/2-this.#size/2);
+        }
+        else{
+            this.setRandomPos();
+        }
     }
 
     show(id){

@@ -2,11 +2,16 @@ class Player extends Entidade {
     #speed;
     #running;
     stamina;
+    canShoot;
+    lastShot;
+
     constructor(x, y, cor, hp, speed, size, team){
         super(x, y, cor, hp, speed, size, team);
         this.stamina = 100;
         this.#speed = this.moveSpeed; // moveSpeed vai ser tratado como algo constante enquanto speed vai ser uma variavel.
         this.#running = false;
+        this.lastShot = 0;
+        this.canShoot = true;
     }
     
 
@@ -44,12 +49,21 @@ class Player extends Entidade {
             this.moveDown();
         }
         let cooldown = 1;
-        if(keyIsDown(70) || keyIsDown(102)){
-            console.log("Ola");
+        if((keyIsDown(70) || keyIsDown(102)) && this.canShoot){
+            this.canShoot = false;
             let bala = new Projetil(this.getPosX() + this.size/2, this.getPosY() + this.size/2, "red", 10, 20, this.getSightDirection(), "Player");
             municao.push(bala);
+            this.lastShot = 0
         }
     }
+
+    shootHaste(){
+        if(!this.canShoot){
+            this.lastShot < 100?this.lastShot++:this.canShoot = true;
+        }
+    }
+
+}
     /*
     //gets
     isPlayerRunning() {
@@ -61,4 +75,4 @@ class Player extends Entidade {
     /*getStamina(){
         return this.stamina;
     }*/
-}
+

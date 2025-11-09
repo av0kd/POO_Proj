@@ -44,6 +44,16 @@
                 inimigos.splice(id, 1);
             }
         }
+        else{
+            fill(this.cor);
+            
+            if(this.alive){
+                square(this.getPosX(), this.getPosY(), this.size);
+            }
+            else{
+                municao.splice(id, 1);
+            }
+        }
         
     }
 
