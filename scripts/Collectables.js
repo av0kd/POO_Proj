@@ -33,7 +33,12 @@ class Collectable{
         if(found < 2*dificulty){
             if(!player.powerUpActivated()){
                 let newType = Math.floor(Math.random()*2+1);
-                this.lastSpotFrame < 480?this.lastSpotFrame++:collectables.push(new Collectable(newType,80));}
+                if(this.lastSpotFrame < 480){
+                    this.lastSpotFrame++;}
+                else{
+                    collectables.push(new Collectable(newType,80));
+                    this.lastSpotFrame = 0;}
+            }
         }
         else{
             this.lastSpotFrame = 0;
@@ -67,9 +72,11 @@ class Collectable{
             if(collectables[id].type == 0){
                 image(soul, this.getPosX(), this.getPosY(), this.#size, this.#size);
             }
+            else if(collectables[id].type == 1){
+                image(powerUpBoot, this.getPosX(),this.getPosY(),this.#size,this.#size);
+            }
             else{
-                this.type == 1?fill("red"):fill("blue");
-                square(this.getPosX(),this.getPosY(),this.#size);
+                image(powerUpShield, this.getPosX(),this.getPosY(),this.#size,this.#size);
             }
         }
 

@@ -1,12 +1,14 @@
 class HUD{
     
+    static opacity = 0;
+    static fadingState = 0;
+
     static showHUD(){
         this.showCompass();
         this.BotaoSair();
-        this.barraVida(player.getPosX() - player.size/10, player.getPosY() - 20, player.size, 10, (player.getHP()/ player.maxHP) * 100);
-        //this.barraVida(player.getPosX() - player.size/2, player.getPosY() - 20, player.size, 8, (player.getHP() / player.maxHp) * 100);
-
-
+        this.showPowerUp();
+        this.barraVida();
+        this.barraStamina();
     }
 
     static showCompass(){
@@ -18,8 +20,6 @@ class HUD{
         image(compass_arrow, 0, 0.75, 75, 80);
         imageMode(CORNER);
         pop();
-
-        Game.centerCanvaOnPlayer();
     }
 
     static angleToEndPoint(){
@@ -48,8 +48,31 @@ class HUD{
         this.BotaoSairInstance.mostrar();
     }
 
-    static barraVida(x, y, largura, altura, porcentagem)
+    
+    static showPowerUp(){
+        this.fadingState == 0 && this.opacity < 250?this.opacity+=5:this.fadingState = 1;
+
+        this.fadingState == 1 && this.opacity > 5?this.opacity-=5:this.fadingState = 0;
+       
+        tint(255,this.opacity);
+        
+        if(player.powerUps[1] > 0){
+            image(powerUpBoot, 605, 500, 90, 90);
+        }
+        if(player.powerUps[2] > 0){
+            image(powerUpShield, 605, 400, 90, 90);
+        }
+        noTint();
+    }
+
+    static barraVida()
     {
+        let x = 100;
+        let y = 100;
+        let largura = 128;
+        let altura = 16;
+        let porcentagem = player.getHP() >= 0?(player.getHP()/ player.maxHP) * 100:0;
+
         push();
         stroke(0);
         fill(60);
@@ -65,15 +88,28 @@ class HUD{
     
     }
 
-    /*static barraStamina(x, y, largura, altura, porcentagem)
-{
-    push();
-    stroke(0);
-    fill(80);
-    rect(x, y, largura, altura);
-    fill(0, 150, 255);
-    rect(x, y, largura * (porcentagem / 100), altura);
-    pop();
-}*/
+    static barraStamina()
+    {
+        let x = 100;
+        let y = 130;
+        let largura = 128;
+        let altura = 16;
+        let porcentagem = player.stamina >= 0?(player.stamina/ player.maxStamina) * 100:0;
+
+        push();
+        stroke(0);
+        fill(60);
+        rect(x, y, largura, altura);
+        fill(lerpColor(color(255, 0, 0), color("00d7ff"), porcentagem / 100)); // verde ↔ vermelho
+        rect(x, y, largura * (porcentagem / 100), altura);
+        fill(255);
+        noStroke();
+        textAlign(CENTER, CENTER);
+        textSize(14);
+        text(`${int(porcentagem)}%`, x + largura / 2, y + altura / 2);
+        pop();
+    
+    }
 
 }
+

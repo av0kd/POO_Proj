@@ -26,7 +26,7 @@ class Inimigo extends Entidade {
     atacar(player){
         if(this.#distanciaDoPlayer(player) <= this.radius){
             console.log("AIAI\n");
-            player.powerUps[2]>0?this.alive=false:this.dano(0.5,player);
+            player.alive && player.powerUps[2]>0?this.alive=false:this.dano(0.1,player);
         }
     }
 

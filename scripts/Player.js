@@ -9,13 +9,15 @@ class Player extends Entidade {
 
     constructor(x, y, cor, hp, speed, size, team){
         super(x, y, cor, hp, speed, size, team);
-        this.stamina = 50;
+        
         this.#speed = this.moveSpeed; // moveSpeed vai ser tratado como algo constante enquanto speed vai ser uma variavel.
         this.#running = false;
         this.lastShot = 0;
         this.canShoot = true;
         this.soulsCollected = 0;
         this.powerUps = [0,0,0];
+        this.maxStamina = 50;
+        this.stamina = this.maxStamina;
     }
     
 
@@ -25,7 +27,7 @@ class Player extends Entidade {
             //console.log("Stamina: "+this.stamina.toFixed(2));
         }
         if(keyIsDown(16) && this.stamina > 0){
-            this.powerUps[1] > 0?this.moveSpeed = this.#speed * 2.25:this.moveSpeed = this.#speed * 1.4;
+            this.powerUps[1] > 0?this.moveSpeed = this.#speed * 2.5:this.moveSpeed = this.#speed * 1.4;
             this.#running = true;
         } else {
             this.#running = false;

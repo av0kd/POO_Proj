@@ -4,16 +4,17 @@
     #hp;
     #sightDirection = "D";
     alive;
+    maxHP;
     constructor(x, y, cor, hp, speed, size, team){
-     this.#x = Number(x);
-     this.#y = Number(y);
-     this.cor = cor;
-     this.alive = true;
-     this.#hp = parseFloat(hp);
-     this.moveSpeed = parseFloat(speed);
-     this.size = parseInt(size);
-     this.team = team;
-     this.maxHP = parseFloat(hp);
+        this.#x = Number(x);
+        this.#y = Number(y);
+        this.cor = cor;
+        this.alive = true;
+        this.maxHP = parseFloat(hp);
+        this.#hp = parseFloat(hp);
+        this.moveSpeed = parseFloat(speed);
+        this.size = parseInt(size);
+        this.team = team;
     }
 
     show(id){
@@ -38,7 +39,20 @@
             fill(this.cor);
             
             if(this.alive){
-                square(this.getPosX(), this.getPosY(), this.size);
+                switch(this.#sightDirection){
+                case("U"):
+                    image(gobImgU, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("D"):
+                    image(gobImgD, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("L"):
+                    image(gobImgL, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+                case("R"):
+                    image(gobImgR, this.getPosX(), this.getPosY(), this.size, this.size);
+                    break;
+            }
             }
             else{
                 collectables.push(new Collectable(0, 60, this.#x+this.size/4, this.#y+this.size/4));
