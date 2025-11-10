@@ -72,11 +72,22 @@ class Game{
 
         HUD.showHUD();
 
-        if (!player.isAlive()) {
-        VouD = "PERDEU"; 
-        dificulty = 5; 
-        StateMachine.generalSetup();
-}
+        if (!player.isAlive())
+            {
+                VouD = "PERDEU"; 
+                dificulty = 5; 
+                StateMachine.generalSetup();
+            }
+
+            if (this.checkVictory()) 
+            {
+                VouD = "VENCEU";
+                dificulty = 5; 
+                StateMachine.generalSetup();
+                return;
+             }
+
+
     }
 
     static centerCanvaOnPlayer(){
@@ -85,6 +96,23 @@ class Game{
 
     static showDarkness(){
         image(escuridao, player.getPosX()-395, player.getPosY()-395, 900, 900);
+    }
+
+
+    static checkVictory()  
+    {
+        
+        let endX = nodeEnd[1][1] * tlMapSz + tlMapSz / 4;
+        let endY = nodeEnd[1][0] * tlMapSz + tlMapSz / 4;
+
+        let px = player.getPosX();
+        let py = player.getPosY();
+
+        let distEnd = dist(px, py, endX, endY);
+        ellipse(endX, endY, 10, 10);
+
+        stroke(0,255,0);
+        return distEnd < 30;
     }
 }
 
