@@ -4,7 +4,7 @@ var mapConfig = [];
 var inimigos = [];
 var municao = [];
 var collectables = [];
-var dificulty = 1;
+var dificulty = 3;
 var canvaConf;
 var player;
 
