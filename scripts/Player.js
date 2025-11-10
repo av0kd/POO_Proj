@@ -4,32 +4,37 @@ class Player extends Entidade {
     stamina;
     canShoot;
     lastShot;
+    soulsCollected;
+    powerUps;
 
     constructor(x, y, cor, hp, speed, size, team){
         super(x, y, cor, hp, speed, size, team);
-        this.stamina = 100;
+        this.stamina = 50;
         this.#speed = this.moveSpeed; // moveSpeed vai ser tratado como algo constante enquanto speed vai ser uma variavel.
         this.#running = false;
         this.lastShot = 0;
         this.canShoot = true;
+        this.soulsCollected = 0;
+        this.powerUps = [0,0,0];
     }
     
 
     moveMap() {
+        this.useFX();
         if(frameCount % 30 == 0){
             //console.log("Stamina: "+this.stamina.toFixed(2));
         }
         if(keyIsDown(16) && this.stamina > 0){
-            this.moveSpeed = this.#speed * 2;
+            this.powerUps[1] > 0?this.moveSpeed = this.#speed * 2.25:this.moveSpeed = this.#speed * 1.4;
             this.#running = true;
         } else {
             this.#running = false;
-            this.moveSpeed = this.#speed;
+            this.powerUps[1] > 0?this.moveSpeed = this.#speed*1.4:this.moveSpeed = this.#speed;
         }
 
         if (this.#running) {
             this.stamina -= 0.07;
-        } else if(!this.#running && this.stamina < 100 && !keyIsDown(16)){
+        } else if(!this.#running && this.stamina < 50 && !keyIsDown(16)){
             this.stamina += 0.10;
         }
 
@@ -60,6 +65,28 @@ class Player extends Entidade {
     shootHaste(){
         if(!this.canShoot){
             this.lastShot < 100?this.lastShot++:this.canShoot = true;
+        }
+    }
+
+    powerUpActivated(){
+        for(let i = 1; i < this.powerUps.length; i++){
+            return this.powerUps[i] > 0?true:false;
+        }
+    }
+
+    useFX(){
+        if(this.powerUps[0] > 0){
+            this.soulsCollected++;
+            this.powerUps[0]--;
+        }
+
+        if(this.powerUps[1] > 0){
+            this.stamina = 50;
+            this.powerUps[1]--;
+        }
+
+        if(this.powerUps[2] > 0){
+            this.powerUps[2]--;
         }
     }
 

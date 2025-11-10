@@ -22,16 +22,19 @@ class Collectable{
     }
 
     static verifyPresence(){
-        let found = false;
+        let found = 0;
 
         for (let i in collectables){
             if(collectables[i].type != 0){
-                found = true;
-                break;}
+                found ++;
+            }
         }
-        
-        if(!found){
-            this.lastSpotFrame < 1200?this.lastSpotFrame++:collectables.push(new Collectable(1,80));}
+
+        if(found < 2*dificulty){
+            if(!player.powerUpActivated()){
+                let newType = Math.floor(Math.random()*2+1);
+                this.lastSpotFrame < 480?this.lastSpotFrame++:collectables.push(new Collectable(newType,80));}
+        }
         else{
             this.lastSpotFrame = 0;
         }
@@ -54,6 +57,7 @@ class Collectable{
             this.#collected = true}
         
         if(this.#collected){
+            this.setFX();
             collectables.splice(id,1);
             return;
         }
@@ -64,7 +68,7 @@ class Collectable{
                 image(soul, this.getPosX(), this.getPosY(), this.#size, this.#size);
             }
             else{
-                
+                this.type == 1?fill("red"):fill("blue");
                 square(this.getPosX(),this.getPosY(),this.#size);
             }
         }
@@ -85,6 +89,23 @@ class Collectable{
 
     setPosY(newVal){
         this.#posY = newVal;
+    }
+
+    setFX(){
+        switch(this.type){
+            
+            case (0):
+                player.powerUps[this.type]+=1;
+                break;
+            case (1):
+                player.powerUps[this.type]+=480*dificulty;
+                break;
+            case (2):
+                player.powerUps[this.type]+=480*dificulty;
+                break;
+            
+        }
+        
     }
 
     #playerDistance(){ //Mede a distância do centro do objeto até o centro de outra entidade.

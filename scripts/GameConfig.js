@@ -1,7 +1,7 @@
 class Game{
     static mySetup(){
 
-        mapConfig = Map.generateMaze(11*dificulty);
+        mapConfig = Map.generateMaze(15*dificulty);
         nodeEnd = System.arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
@@ -32,7 +32,7 @@ class Game{
             player.shootHaste();
             //bala.showBala();
         }
-        
+        console.log(player.powerUps[0] + " " + player.powerUps[1] + " " + player.powerUps[2] + " | " + collectables.length);
 
         //Projetil
         for(let i in municao){
