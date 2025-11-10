@@ -18,11 +18,11 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
     
     - Retirar inimigos derrotados da tela [X]
 
-    - Coletáveis []
+    - Coletáveis [X]
 
-    - Power-ups []
+    - Power-ups [X]
 
-    - HUD []
+    - HUD [] - Parcialmente feito;
 
     - Telas de abertura []
     
