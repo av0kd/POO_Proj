@@ -25,7 +25,7 @@ class Player extends Entidade {
             //console.log("Stamina: "+this.stamina.toFixed(2));
         }
         if(keyIsDown(16) && this.stamina > 0){
-            this.powerUps[1] > 0?this.moveSpeed = this.#speed * 2.25:this.moveSpeed = this.#speed * 1.4;
+            this.powerUps[1] > 0?this.moveSpeed = this.#speed * 2.5:this.moveSpeed = this.#speed * 1.4;
             this.#running = true;
         } else {
             this.#running = false;

@@ -1,7 +1,11 @@
 class HUD{
     
+    static opacity = 0;
+    static fadingState = 0;
+
     static showHUD(){
         this.showCompass();
+        this.showPowerUp();
     }
 
     static showCompass(){
@@ -14,7 +18,7 @@ class HUD{
         imageMode(CORNER);
         pop();
 
-        Game.centerCanvaOnPlayer();
+        //Game.centerCanvaOnPlayer();
     }
 
     static angleToEndPoint(){
@@ -23,5 +27,23 @@ class HUD{
 
         return atan2(pointY, pointX);
     }
+
+    static showPowerUp(){
+        this.fadingState == 0 && this.opacity < 250?this.opacity+=5:this.fadingState = 1;
+
+        this.fadingState == 1 && this.opacity > 5?this.opacity-=5:this.fadingState = 0;
+       
+        tint(255,this.opacity);
+        
+        if(player.powerUps[1] > 0){
+            image(powerUpBoot, 650, 500, 90, 90);
+        }
+        if(player.powerUps[2] > 0){
+            image(powerUpShield, 490, 650, 90, 90);
+        }
+
+        noTint();
+    }
+
 
 }

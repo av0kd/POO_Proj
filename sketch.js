@@ -4,7 +4,7 @@ var mapConfig = [];
 var inimigos = [];
 var municao = [];
 var collectables = [];
-var dificulty = 3;
+var dificulty = 1;
 var canvaConf;
 var player;
 
@@ -21,6 +21,8 @@ function preload(){
     end = loadImage('/assets/img_03.png');
     compass_arrow = loadImage('/assets/seta.png');
     compass_body = loadImage('/assets/bussola_corpo.png');
+    powerUpBoot = loadImage('/assets/boot.png');
+    powerUpShield = loadImage('/assets/shield.png');
 }
 
 function setup(){
