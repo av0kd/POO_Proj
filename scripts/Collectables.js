@@ -36,7 +36,7 @@ class Collectable{
                 if(this.lastSpotFrame < 480){
                     this.lastSpotFrame++;}
                 else{
-                    collectables.push(new Collectable(newType,80));
+                    collectables.push(new Collectable(2,80));
                     this.lastSpotFrame = 0;}
             }
         }

@@ -100,7 +100,7 @@ class HUD{
         stroke(0);
         fill(60);
         rect(x, y, largura, altura);
-        fill(lerpColor(color(255, 0, 0), color("00d7ff"), porcentagem / 100)); // verde ↔ vermelho
+        fill(173,216,230); // verde ↔ vermelho
         rect(x, y, largura * (porcentagem / 100), altura);
         fill(255);
         noStroke();

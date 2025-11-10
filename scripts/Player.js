@@ -36,7 +36,7 @@ class Player extends Entidade {
 
         if (this.#running) {
             this.stamina -= 0.07;
-        } else if(!this.#running && this.stamina < 50 && !keyIsDown(16)){
+        } else if(!this.#running && this.stamina < this.maxStamina && !keyIsDown(16)){
             this.stamina += 0.10;
         }
 
@@ -83,11 +83,12 @@ class Player extends Entidade {
         }
 
         if(this.powerUps[1] > 0){
-            this.stamina = 50;
+            this.stamina = this.maxStamina;
             this.powerUps[1]--;
         }
 
         if(this.powerUps[2] > 0){
+            this.hp = this.maxHP;
             this.powerUps[2]--;
         }
     }

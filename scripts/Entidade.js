@@ -11,7 +11,7 @@
         this.cor = cor;
         this.alive = true;
         this.maxHP = parseFloat(hp);
-        this.#hp = parseFloat(hp);
+        this.#hp = this.maxHP;
         this.moveSpeed = parseFloat(speed);
         this.size = parseInt(size);
         this.team = team;
