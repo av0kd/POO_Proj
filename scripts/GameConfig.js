@@ -58,7 +58,7 @@ class Game{
             if(inimigos[i].isAlive()){
                 inimigos[i].show(i);
                 inimigos[i].randomMove();
-                //inimigos[i].atacar(player);
+                inimigos[i].atacar(player);
                 inimigos[i].checkDeath();
             }
             else{
@@ -72,6 +72,11 @@ class Game{
 
         HUD.showHUD();
 
+        if (!player.isAlive()) {
+        VouD = "PERDEU"; 
+        dificulty = 5; 
+        StateMachine.generalSetup();
+}
     }
 
     static centerCanvaOnPlayer(){
@@ -88,6 +93,8 @@ function displayStamina(){
     displayStamina();
     document.getElementById('Stamina').innerHTML = "Estamina do jogador: " + player.stamina.toFixed(2);
 }*/
+
+
 
 
 

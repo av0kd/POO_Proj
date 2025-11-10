@@ -3,7 +3,10 @@ class HUD{
     static showHUD(){
         this.showCompass();
         this.BotaoSair();
-        //this.barraVida(20, 80, 200, 20, player.stamina);
+        this.barraVida(player.getPosX() - player.size/10, player.getPosY() - 20, player.size, 10, (player.getHP()/ player.maxHP) * 100);
+        //this.barraVida(player.getPosX() - player.size/2, player.getPosY() - 20, player.size, 8, (player.getHP() / player.maxHp) * 100);
+
+
     }
 
     static showCompass(){
@@ -46,16 +49,22 @@ class HUD{
         this.BotaoSairInstance.mostrar();
     }
 
-    /*static barraVida(x, y, largura, altura, porcentagem)
+    static barraVida(x, y, largura, altura, porcentagem)
     {
         push();
         stroke(0);
-        fill(255, 0, 0);
+        fill(60);
         rect(x, y, largura, altura);
-        fill(0, 255, 0);
+        fill(lerpColor(color(255, 0, 0), color(0, 255, 0), porcentagem / 100)); // verde ↔ vermelho
         rect(x, y, largura * (porcentagem / 100), altura);
+        fill(255);
+        noStroke();
+        textAlign(CENTER, CENTER);
+        textSize(14);
+        text(`${int(porcentagem)}%`, x + largura / 2, y + altura / 2);
         pop();
-    }*/
+    
+    }
 
     /*static barraStamina(x, y, largura, altura, porcentagem)
 {

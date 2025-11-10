@@ -1,5 +1,4 @@
 
-// StateMachine.js
 class StateMachine{
     static generalSetup(){
         frameRate(120);
@@ -12,6 +11,8 @@ class StateMachine{
             Game.mySetup();   
         }else if(dificulty == 4){
             DificuldadeC.mySetup();
+        }else if(dificulty == 5){
+            TelaResultadoConfig.mySetup(VouD);
         }
     }
 
@@ -26,7 +27,10 @@ class StateMachine{
             Game.myDraw();    
         }else if(dificulty == 4){
             DificuldadeC.myDraw();
+        }else if(dificulty == 5){
+            TelaResultadoConfig.myDraw();
         }
+        
     }
 
 }

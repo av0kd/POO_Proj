@@ -8,6 +8,7 @@ var collectables = [];
 var dificulty = 0;
 var canvaConf;
 var player;
+var VouD = "";
 
 
 function preload(){
@@ -24,6 +25,9 @@ function preload(){
     compass_body = loadImage('/assets/bussola_corpo.png');
     menuBg = loadImage('/assets/DW.png');
     Es_Difi = loadImage('/assets/dificuldade.png');
+
+    Tvitoria = loadImage('/assets/vitoria.png');
+    Tderrota = loadImage('/assets/derrota.png');
 }
 
 function setup(){

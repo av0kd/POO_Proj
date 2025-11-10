@@ -13,6 +13,7 @@
      this.moveSpeed = parseFloat(speed);
      this.size = parseInt(size);
      this.team = team;
+     this.maxHP = parseFloat(hp);
     }
 
     show(id){
@@ -173,6 +174,7 @@
     checkDeath(){
         if(this.getHP() <= 0){
             this.alive = false;
+            VouD = "PERDEU";
         }
     }
 
