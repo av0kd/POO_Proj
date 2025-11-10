@@ -41,7 +41,6 @@ class HUD{
                 collectables = [];
                 mapConfig = [];
                 nodeEnd = [];   
-
                 dificulty = 0;
                 StateMachine.generalSetup();
             }, false);

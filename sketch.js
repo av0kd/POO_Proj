@@ -25,9 +25,10 @@ function preload(){
     compass_body = loadImage('/assets/bussola_corpo.png');
     menuBg = loadImage('/assets/DW.png');
     Es_Difi = loadImage('/assets/dificuldade.png');
-
     Tvitoria = loadImage('/assets/vitoria.png');
     Tderrota = loadImage('/assets/derrota.png');
+    MenuSound = loadSound('/assets/audMenu.mp3');
+    GameSound = loadSound('/assets/audGame.mp3');
 }
 
 function setup(){
@@ -35,5 +36,5 @@ function setup(){
 }
 
 function draw(){
-    StateMachine.generalDraw();    
+    StateMachine.generalDraw();  
 }
