@@ -22,11 +22,11 @@ Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orienta
 
     - Power-ups [X]
 
-    - HUD [] - Parcialmente feito;
+    - HUD [X] 
 
-    - Telas de abertura []
+    - Telas de abertura [X]
     
-    - Tela de game Over []
+    - Tela de game Over [X]
 
 ## Lista de fazeres: 
     Darlan -
