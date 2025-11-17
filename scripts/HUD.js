@@ -9,6 +9,7 @@ class HUD{
         this.showPowerUp();
         this.barraVida();
         this.barraStamina();
+        this.enemySoulsCount();
     }
 
     static showCompass(){
@@ -109,6 +110,13 @@ class HUD{
         text(`${int(porcentagem)}%`, x + largura / 2, y + altura / 2);
         pop();
     
+    }
+
+    static enemySoulsCount(){
+        image(soul, 575, 100, 80, 80);
+        fill(255)
+        textSize(34);
+        text(`${player.soulsCollected} / ${enemyCount}`, 695, 145);
     }
 
 }

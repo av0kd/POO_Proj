@@ -1,12 +1,13 @@
 class Game{
     static mySetup(){
-
-        mapConfig = Map.generateMaze(15*dificulty);
+        enemyCount = 0;
+        mapConfig = Map.generateMaze(9*dificulty);
         nodeEnd = System.arrayShuffle(nodeEnd);
         player = new Player(nodeEnd[0][1]*tlMapSz+20,nodeEnd[0][0]*tlMapSz+20,"player",10,2, 120,"Player");
         while(nodeEnd.length > 2){
             Inimigo.criarInimigo(nodeEnd[nodeEnd.length-1][1]*tlMapSz+20,nodeEnd[nodeEnd.length-1][0]*tlMapSz+20,'139, 69, 19',1,3.5,120,"Enemy");
-            nodeEnd.pop();   
+            nodeEnd.pop();
+            enemyCount++;   
         }
     }
 
@@ -16,12 +17,10 @@ class Game{
         Map.showMap();
         Map.drawEndPoint();
         Collectable.verifyPresence();
-        
         //coletaveis
         for(let i in collectables){
             collectables[i].show(i);
         }
-
         //Player
         if(player.isAlive()){
             player.checkDeath();
@@ -76,7 +75,7 @@ class Game{
                 StateMachine.generalSetup();
             }
 
-            if (this.checkVictory()) 
+            if (player.soulsCollected == enemyCount && this.checkVictory()) 
             {
                 VouD = "VENCEU";
                 dificulty = 5; 
@@ -106,9 +105,6 @@ class Game{
         let py = player.getPosY();
 
         let distEnd = dist(px, py, endX, endY);
-        ellipse(endX, endY, 10, 10);
-
-        stroke(0,255,0);
         return distEnd < 30;
     }
 }

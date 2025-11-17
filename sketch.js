@@ -9,6 +9,7 @@ var dificulty = 0;
 var canvaConf;
 var player;
 var VouD = "";
+var enemyCount;
 
 
 function preload(){
