@@ -55,7 +55,6 @@ class Player extends Entidade {
         if (keyIsDown(83)||keyIsDown(DOWN_ARROW)) {
             this.moveDown();
         }
-        let cooldown = 1;
         if((keyIsDown(70) || keyIsDown(102)) && this.canShoot){
             this.canShoot = false;
             let bala = new Projetil(this.getPosX() + this.size/2, this.getPosY() + this.size/2, "red", 10, 20, this.getSightDirection(), "Player");
@@ -66,7 +65,7 @@ class Player extends Entidade {
 
     shootHaste(){
         if(!this.canShoot){
-            this.lastShot < 100?this.lastShot++:this.canShoot = true;
+            this.lastShot < 35?this.lastShot++:this.canShoot = true;
         }
     }
 
