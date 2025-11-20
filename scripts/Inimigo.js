@@ -25,7 +25,6 @@ class Inimigo extends Entidade {
 
     atacar(player){
         if(this.#distanciaDoPlayer(player) <= this.radius){
-            console.log("AIAI\n");
             player.alive && player.powerUps[2]>0?this.alive=false:this.dano(0.1,player);
         }
     }
@@ -35,82 +34,25 @@ class Inimigo extends Entidade {
         let cQuadX = this.getPosX() > 160? this.getPosX() : 162;
         let cQuadY = this.getPosY() > 160? this.getPosY() : 162;
         this.getPossibleDirections();
-        if(direc == "U" && Math.floor((cQuadY+this.size+20)/160) != this.lastY){ 
-            
-            this.lastY = Math.floor(cQuadY/160);
-            this.lastX = Math.floor(cQuadX/160);
 
-            if(this.directs[0] == 1 && this.DirOption(0) == 0){
-                this.moveTo(0);
-            }
-            else if(this.directs[0] == 1 && this.DirOption(0) != 0){
-                let random = Math.floor(Math.random()*2);
-                random == 0?this.moveTo(0):this.moveTo(this.DirOption(0));
-            }
-            else if(this.directs[0] == 0 && this.DirOption(0) != 0){
-                this.moveTo(this.DirOption(0));
-            }
-            else{
-                this.moveTo(1);
-            }
+        if(direc == "U" && Math.floor((cQuadY+this.size+20)/160) != this.lastY){
+            this.updateLastXnY(cQuadY,cQuadX);
+            this.verifySurroundings(0,1);
         }
         //possiveis movimentos olhando pra baixo
         else if(direc == "D" && (Math.floor((cQuadY-20)/160) != this.lastY)){ // || Math.floor((cQuadY-20)/160) == this.inicialY)){ 
-            this.lastY = Math.floor(cQuadY/160);
-            this.lastX = Math.floor(cQuadX/160);
-
-            if(this.directs[1] == 1 && this.DirOption(1) == 1){
-                this.moveTo(1);
-            }
-            else if(this.directs[1] == 1 && this.DirOption(1) != 1){
-                let random = Math.floor(Math.random()*2);
-                random == 0?this.moveTo(1):this.moveTo(this.DirOption(1));
-            }
-            else if(this.directs[1] == 0 && this.DirOption(1) != 1){
-                this.moveTo(this.DirOption(1));
-            }
-            else{
-                this.moveTo(0);
-            }
-            
+            this.updateLastXnY(cQuadY,cQuadX);
+            this.verifySurroundings(1,0);
         }
         //possiveis movimentos olhando pra esquerda
         else if(direc == "L" && Math.floor((cQuadX+this.size+20)/160) != this.lastX){ 
-            this.lastX = Math.floor(cQuadX/160);
-            this.lastY = Math.floor(cQuadY/160);
-            if(this.directs[2] == 1 && this.DirOption(2) == 2){
-                this.moveTo(2);
-            }
-            else if(this.directs[2] == 1 && this.DirOption(2) != 2){
-                let random = Math.floor(Math.random()*2);
-                random == 0?this.moveTo(2):this.moveTo(this.DirOption(2));
-            }
-            else if(this.directs[2] == 0 && this.DirOption(2) != 2){
-                this.moveTo(this.DirOption(2));
-            }
-            else{
-                this.moveTo(3);
-            }
-            
+            this.updateLastXnY(cQuadY,cQuadX);
+            this.verifySurroundings(2,3);
         }
         //possiveis movimentos olhando pra direita
         else if (direc == "R" && Math.floor((cQuadX-20)/160) != this.lastX){ 
-            this.lastX = Math.floor(cQuadX/160);
-            this.lastY = Math.floor(cQuadY/160);
-            if(this.directs[3] == 1 && this.DirOption(3) == 3){
-                this.moveTo(3);
-            }
-            else if(this.directs[3] == 1 && this.DirOption(3) != 3){
-                let random = Math.floor(Math.random()*2);
-                random == 0?this.moveTo(3):this.moveTo(this.DirOption(3));
-            }
-            else if(this.directs[3] == 0 && this.DirOption(3) != 3){
-                this.moveTo(this.DirOption(3));
-            }
-            else{
-                this.moveTo(2);
-            }
-            
+            this.updateLastXnY(cQuadY,cQuadX);
+            this.verifySurroundings(3,2); 
         }
         else{
             this.moveTo(this.getDirectionAsNum());
@@ -176,6 +118,28 @@ class Inimigo extends Entidade {
             }
         }
         return whereToGo.length == 0?indx:whereToGo[Math.floor(Math.random()*whereToGo.length)];
+    }
+
+    verifySurroundings(dirOpt,opositeDir){
+        
+        if(this.directs[dirOpt] == 1 && this.DirOption(dirOpt) == dirOpt){
+            this.moveTo(dirOpt);
+        }
+        else if(this.directs[dirOpt] == 1 && this.DirOption(dirOpt) != dirOpt){
+            let random = Math.floor(Math.random()*2);
+            random == 0?this.moveTo(dirOpt):this.moveTo(this.DirOption(dirOpt));
+        }
+        else if(this.directs[dirOpt] == 0 && this.DirOption(dirOpt) != dirOpt){
+            this.moveTo(this.DirOption(dirOpt));
+        }
+        else{
+            this.moveTo(opositeDir);
+        }
+    }
+
+    updateLastXnY(currentY, currentX){
+        this.lastY = Math.floor(currentY/160);
+        this.lastX = Math.floor(currentX/160);
     }
 
     static criarInimigo(x, y, cor, hp, speed, size, team){

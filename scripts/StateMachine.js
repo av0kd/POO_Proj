@@ -26,7 +26,6 @@ class StateMachine{
     static generalDraw(){
         background(0);
         
-        console.log(dificulty)
         if(dificulty == 0){
             MenuC.myDraw();
         }
