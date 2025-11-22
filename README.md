@@ -1,50 +1,8 @@
 # POO_Deadly-Whisper
 
-Projeto utilizando a biblioteca p5.js para a disciplina de Programação Orientada à Objetos (2025.2), ministrada pelo professor Rummenigge Dantas, na ECT - UFRN.
+    Project developed using p5.js library to OOP discipline (2025.2), taught by professor Rummenigge Dantas, ECT - UFRN.
 
-## Participantes do projeto:
+## Objectives:
 
-    - Darlan Fernandes de Lima Soares (20240007694)
-    - Eliel Adeladio de Lima Filho (20240035859)
-    - Enzo Lucas Maciel Santos (20240015444)
-
-## Objetivos:
-
-    - Um personagem controlado pelo jogador [X]
+    Start and finish the maze in random dead ends after collecting every enemy soul.
     
-    - Um conjunto de inimigos controlados pelo computador [X]
-
-    - O inimigo terá uma classe com várias instancias [X]
-    
-    - Retirar inimigos derrotados da tela [X]
-
-    - Coletáveis [X]
-
-    - Power-ups [X]
-
-    - HUD [] - Parcialmente feito;
-
-    - Telas de abertura []
-    
-    - Tela de game Over []
-
-## Lista de fazeres: 
-    Darlan -
-    ... 
-    Eliel - 
-    ...
-    Enzo -
-    ...
-    
-## Requisitos técnicos:
-# Herança:
-    - 3 Classes que herdem (FEITO) 
-    - Cada classe filho tem mais atributos novos (FEITO) 
-# Estático:
-    - Métodos estáticos (FEITO) 
-# Polimorfismo:
-    3 usos dos métodos this(); (FEITO) 
-    3 usos dos métodos super(); (FEITO) 
-    *Private
-    3 atributos privados em 3 classes (FEITO) 
-    3 pares de get e set; (FEITO) 
