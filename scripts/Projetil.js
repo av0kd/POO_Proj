@@ -41,7 +41,7 @@ class Projetil extends Entidade {
     balear(entidade){
         if(this.checkColision(entidade)){
             this.dano(1, entidade);
-            console.log("Dei dano!");
+            //console.log("Dei dano!");
         }
     }
 
